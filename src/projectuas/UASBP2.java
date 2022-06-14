@@ -233,6 +233,7 @@ public class UASBP2 {
         System.out.println("alhamdulillah");
         System.out.println("Haloo");
         System.out.println("Yess");
+        System.out.println("hore");
     }
     
 }
