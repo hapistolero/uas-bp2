@@ -232,6 +232,7 @@ public class UASBP2 {
         System.out.println("CONNECTED");
         System.out.println("alhamdulillah");
         System.out.println("Haloo");
+        System.out.println("Yess");
     }
     
 }
