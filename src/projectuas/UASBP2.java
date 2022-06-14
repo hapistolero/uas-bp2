@@ -229,7 +229,8 @@ public class UASBP2 {
                     break;
             }
         } while (pilih!=5);
-        
+        System.out.println("CONNECTED");
+        System.out.println("alhamdulillah");
     }
     
 }
