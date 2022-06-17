@@ -131,6 +131,16 @@ public class cDaftarTransaksi {
             }
             return proses;
         }
+        public int lihatunproses(){
+            cTransaksi t=front;
+            int unproses=0;
+            for (; t!=null; t=t.next) {
+                if (t.getStatus()==0) {
+                    unproses++;                    
+                }
+            }
+            return unproses;
+        }
         public double lihatpemasukan(){
              cTransaksi t=front;
             double nominal=0;
@@ -142,9 +152,242 @@ public class cDaftarTransaksi {
                     }                                       
                 }                
             }
+            
             return nominal;
             
             
         }
+        public double lihatunpemasukan(){
+             cTransaksi t=front;
+            double nominal=0;
+           
+            for (; t!=null; t=t.next) {
+                if (t.getStatus()==0) {
+                   
+                     nominal=nominal+t.getBarang().getHarga()*t.getJumlah();
+                    if (t.getPembeli().equalsIgnoreCase("10")|t.getPembeli().equalsIgnoreCase("11")||t.getPembeli().equalsIgnoreCase("12")) {
+                        nominal=nominal-(0.1*nominal);
+                    }                                       
+                }                
+            }
+            return nominal;
+            
+            
+        }
+         public double totalpan(){
+             cTransaksi t=front;
+            double nominal=0;
+            for (; t!=null; t=t.next) {
+                if (t.getidbrg()==1&&t.getStatus()==1) {
+                     nominal=nominal+t.getBarang().getHarga()*t.getJumlah();
+                    if (t.getPembeli().equalsIgnoreCase("10")|t.getPembeli().equalsIgnoreCase("11")||t.getPembeli().equalsIgnoreCase("12")) {
+                        nominal=nominal-(0.1*nominal);
+                    }                                       
+                }                
+            }
+            
+            return nominal;                        
+        }
+         public void totalpangraf(){
+             cTransaksi t=front;
+            double nominal=0;
+            for (; t!=null; t=t.next) {
+                if (t.getidbrg()==1&&t.getStatus()==1) {
+                     nominal=nominal+t.getBarang().getHarga()*t.getJumlah();
+                      if (t.getPembeli().equalsIgnoreCase("10")|t.getPembeli().equalsIgnoreCase("11")||t.getPembeli().equalsIgnoreCase("12")) {
+                        nominal=nominal-(0.1*nominal);
+                    }      
+                              
+                }                                 
+            }
+            double nominalgraf = nominal*0.0001;
+            double nominalgrafx = nominal*0.001;
+             for (int i = 0; i < nominalgraf-1; i++) {
+                 System.out.print("X"); 
+             }
+                System.out.println(" / "+Math.floor(nominalgrafx)+"00");                                                         
+        }
+          public void totalblendgraf(){
+             cTransaksi t=front;
+            double nominal=0;
+            for (; t!=null; t=t.next) {
+                if (t.getidbrg()==2&&t.getStatus()==1) {
+                     nominal=nominal+t.getBarang().getHarga()*t.getJumlah();
+                      if (t.getPembeli().equalsIgnoreCase("10")|t.getPembeli().equalsIgnoreCase("11")||t.getPembeli().equalsIgnoreCase("12")) {
+                        nominal=nominal-(0.1*nominal);
+                    }               
+                }                                 
+            }
+            double nominalgraf = nominal*0.0001;
+            double nominalgrafx = nominal*0.001;
+             for (int i = 0; i < nominalgraf-1; i++) {
+                 System.out.print("X"); 
+             }
+                System.out.println(" / "+Math.floor(nominalgrafx)+"00");                                                         
+        }
+          public void totalulekgraf(){
+             cTransaksi t=front;
+            double nominal=0;
+            for (; t!=null; t=t.next) {
+                if (t.getidbrg()==3&&t.getStatus()==1) {
+                     nominal=nominal+t.getBarang().getHarga()*t.getJumlah();
+                      if (t.getPembeli().equalsIgnoreCase("10")|t.getPembeli().equalsIgnoreCase("11")||t.getPembeli().equalsIgnoreCase("12")) {
+                        nominal=nominal-(0.1*nominal);
+                    }               
+                }                                 
+            }
+            double nominalgraf = nominal*0.0001;
+            double nominalgrafx = nominal*0.001;
+             for (int i = 0; i < nominalgraf-1; i++) {
+                 System.out.print("X"); 
+             }
+                System.out.println(" / "+Math.floor(nominalgrafx)+"00");                                                         
+        }
+          public void totalmuggraf(){
+             cTransaksi t=front;
+            double nominal=0;
+            for (; t!=null; t=t.next) {
+                if (t.getidbrg()==4&&t.getStatus()==1) {
+                     nominal=nominal+t.getBarang().getHarga()*t.getJumlah();
+                      if (t.getPembeli().equalsIgnoreCase("10")|t.getPembeli().equalsIgnoreCase("11")||t.getPembeli().equalsIgnoreCase("12")) {
+                        nominal=nominal-(0.1*nominal);
+                    }               
+                }                                 
+            }
+            double nominalgraf = nominal*0.0001;
+            double nominalgrafx = nominal*0.001;
+             for (int i = 0; i < nominalgraf-1; i++) {
+                 System.out.print("X"); 
+             }
+                System.out.println(" / "+Math.floor(nominalgrafx)+"00");                                                         
+        }
+          public void totalwajangraf(){
+             cTransaksi t=front;
+            double nominal=0;
+            for (; t!=null; t=t.next) {
+                if (t.getidbrg()==5&&t.getStatus()==1) {
+                     nominal=nominal+t.getBarang().getHarga()*t.getJumlah();
+                      if (t.getPembeli().equalsIgnoreCase("10")|t.getPembeli().equalsIgnoreCase("11")||t.getPembeli().equalsIgnoreCase("12")) {
+                        nominal=nominal-(0.1*nominal);
+                    }               
+                }                                 
+            }
+            double nominalgraf = nominal*0.0001;
+            double nominalgrafx = nominal*0.001;
+             for (int i = 0; i < nominalgraf-1; i++) {
+                 System.out.print("X"); 
+             }
+                System.out.println(" / "+Math.floor(nominalgrafx)+"00");                                                         
+        }
+         
+          public double totalblend(){
+             cTransaksi t=front;
+            double nominal=0;
+            for (; t!=null; t=t.next) {
+                if (t.getidbrg()==2&&t.getStatus()==1) {
+                     nominal=nominal+t.getBarang().getHarga()*t.getJumlah();
+                    if (t.getPembeli().equalsIgnoreCase("10")|t.getPembeli().equalsIgnoreCase("11")||t.getPembeli().equalsIgnoreCase("12")) {
+                        nominal=nominal-(0.1*nominal);
+                    }                                       
+                }                
+            }
+            
+            return nominal;
+            
+            
+        }
+         public double totalulekan(){
+             cTransaksi t=front;
+            double nominal=0;
+            for (; t!=null; t=t.next) {
+                if (t.getidbrg()==3&&t.getStatus()==1) {
+                     nominal=nominal+t.getBarang().getHarga()*t.getJumlah();
+                    if (t.getPembeli().equalsIgnoreCase("10")|t.getPembeli().equalsIgnoreCase("11")||t.getPembeli().equalsIgnoreCase("12")) {
+                        nominal=nominal-(0.1*nominal);
+                    }                                       
+                }                
+            }
+            
+            return nominal;
+            
+            
+        }
+          public double totalmug(){
+             cTransaksi t=front;
+            double nominal=0;
+            for (; t!=null; t=t.next) {
+                if (t.getidbrg()==4&&t.getStatus()==1) {
+                     nominal=nominal+t.getBarang().getHarga()*t.getJumlah();
+                    if (t.getPembeli().equalsIgnoreCase("10")|t.getPembeli().equalsIgnoreCase("11")||t.getPembeli().equalsIgnoreCase("12")) {
+                        nominal=nominal-(0.1*nominal);
+                    }                                       
+                }                
+            }
+            
+            return nominal;
+            
+            
+        }
+           public double totalwajan(){
+             cTransaksi t=front;
+            double nominal=0;
+            for (; t!=null; t=t.next) {
+                if (t.getidbrg()==5&&t.getStatus()==1) {
+                     nominal=nominal+t.getBarang().getHarga()*t.getJumlah();
+                    if (t.getPembeli().equalsIgnoreCase("10")|t.getPembeli().equalsIgnoreCase("11")||t.getPembeli().equalsIgnoreCase("12")) {
+                        nominal=nominal-(0.1*nominal);
+                    }                                       
+                }                
+            }
+            
+            return nominal;                                      
+        }
+           
+           public double totalmem10(){
+               cTransaksi t=front;
+            double nominal=0;
+            for (; t!=null; t=t.next) {
+                if (t.getStatus()==1&&t.getPembeli().equalsIgnoreCase("10")) {
+                     nominal=nominal+t.getBarang().getHarga()*t.getJumlah();
+                    if (t.getPembeli().equalsIgnoreCase("10")) {
+                        nominal=nominal-(0.1*nominal);
+                    }                                       
+                }                
+            }
+            
+            return nominal;      
+           }
+           
+           public double totalmem11(){
+               cTransaksi t=front;
+            double nominal=0;
+            for (; t!=null; t=t.next) {
+                if (t.getStatus()==1&&t.getPembeli().equalsIgnoreCase("11")) {
+                     nominal=nominal+t.getBarang().getHarga()*t.getJumlah();
+                    if (t.getPembeli().equalsIgnoreCase("11")) {
+                        nominal=nominal-(0.1*nominal);
+                    }                                       
+                }                
+            }
+            
+            return nominal;      
+           }
+           
+           public double totalmem12(){
+               cTransaksi t=front;
+            double nominal=0;
+            for (; t!=null; t=t.next) {
+                if (t.getStatus()==1&&t.getPembeli().equalsIgnoreCase("12")) {
+                     nominal=nominal+t.getBarang().getHarga()*t.getJumlah();
+                    if (t.getPembeli().equalsIgnoreCase("12")) {
+                        nominal=nominal-(0.1*nominal);
+                    }                                       
+                }                
+            }
+            
+            return nominal;      
+           }
+       
+         }
+         
 
-}
