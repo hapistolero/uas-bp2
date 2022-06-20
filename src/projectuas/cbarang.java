@@ -20,4 +20,8 @@ public class cbarang {
     public String disp(){
         return nama+" "+harga;
     }
+
+    void setharga(int hrgbaru) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

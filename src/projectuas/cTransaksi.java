@@ -16,6 +16,10 @@ public class cTransaksi {
         kode=k; pembeli=p; barang=b; jumlah= j; status=s;
         next = null;
     }
+
+    cTransaksi(String valueOf, String nama, cbarang brg1, int jumlah, int i, int i0) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     public void setStatus(int s){
         status=s;
     }
@@ -41,6 +45,10 @@ public class cTransaksi {
     }
     public int getStatus(){
         return status;
+    }
+
+    int getidbrg() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
         
 }
