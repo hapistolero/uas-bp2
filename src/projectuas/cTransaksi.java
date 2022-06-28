@@ -10,16 +10,14 @@ public class cTransaksi {
     cbarang barang;
     int jumlah ;
     int status;
+    int idBarang;
     cTransaksi next;
     
-    cTransaksi(String k, String p, cbarang b, int j, int s){
-        kode=k; pembeli=p; barang=b; jumlah= j; status=s;
+    cTransaksi(String k, String p, cbarang b, int j, int s, int idBr){
+        kode=k; pembeli=p; barang=b; jumlah= j; status=s; idBarang=idBr;
         next = null;
     }
 
-    cTransaksi(String valueOf, String nama, cbarang brg1, int jumlah, int i, int i0) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
     public void setStatus(int s){
         status=s;
     }
@@ -31,7 +29,6 @@ public class cTransaksi {
     return pembeli;
     }
      
-    
     public cbarang getBarang(){
         return barang;
     }
@@ -46,9 +43,9 @@ public class cTransaksi {
     public int getStatus(){
         return status;
     }
-
-    int getidbrg() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    
+    public int getIdBrg() {
+        return idBarang;
     }
         
 }

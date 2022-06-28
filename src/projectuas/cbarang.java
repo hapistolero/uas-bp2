@@ -21,7 +21,7 @@ public class cbarang {
         return nama+" "+harga;
     }
 
-    void setharga(int hrgbaru) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void setharga(int hrgbaru) {
+        harga = hrgbaru;
     }
 }
