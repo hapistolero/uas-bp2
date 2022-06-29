@@ -4,6 +4,7 @@
  */
 package jFrame;
 
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import projectuas.cTransaksi;
 
@@ -16,33 +17,38 @@ public class JFrameMenuAdmin extends javax.swing.JFrame {
     /**
      * Creates new form JFrameMenuAdmin
      */
+    static boolean aksi = false;
+    cTransaksi trans = projectuas.MainApps.jual.getFront(); 
+    static int baris = 0;
+    
     public JFrameMenuAdmin() {
         initComponents();
         DefaultTableModel modeltbl = (DefaultTableModel)listProses.getModel();
-        cTransaksi trans = projectuas.MainApps.jual.getFront();
+        cTransaksi transBaru = trans;
         String proses[][] = new String[jmlPesan][8];
         do {
             int i = 0;
-            if(trans.getStatus() == 0) {
-                proses[i][0] = trans.getKode();
-                proses[i][1] = trans.getPembeli();
-                proses[i][2] = trans.getBarang().getNama();
-                proses[i][3] = String.valueOf(trans.getBarang().getHarga());
-                proses[i][4] = String.valueOf(trans.getJumlah());
-                if(trans.getPembeli().equalsIgnoreCase("1") || trans.getPembeli().equalsIgnoreCase("2") || trans.getPembeli().equalsIgnoreCase("3")) {
+            if(transBaru.getStatus() == 0) {
+                proses[i][0] = transBaru.getKode();
+                proses[i][1] = transBaru.getPembeli();
+                proses[i][2] = transBaru.getBarang().getNama();
+                proses[i][3] = String.valueOf(transBaru.getBarang().getHarga());
+                proses[i][4] = String.valueOf(transBaru.getJumlah());
+                if(transBaru.getPembeli().equalsIgnoreCase("1") || transBaru.getPembeli().equalsIgnoreCase("2") || transBaru.getPembeli().equalsIgnoreCase("3")) {
 //                    String subTotal = String.valueOf((trans.getBarang().getHarga()*trans.getJumlah()) * 0.05);
-                    proses[i][5] = String.valueOf( (trans.getBarang().getHarga()*trans.getJumlah()) * 0.05);
-                    proses[i][6] = String.valueOf(trans.getBarang().getHarga() - trans.getBarang().getHarga()*0.05);
+                    proses[i][5] = String.valueOf( (transBaru.getBarang().getHarga()*transBaru.getJumlah()) * 0.05);
+                    proses[i][6] = String.valueOf(transBaru.getBarang().getHarga() - transBaru.getBarang().getHarga()*0.05);
                 } else {
                     proses[i][5] = "-";
-                    proses[i][6] = String.valueOf(trans.getBarang().getHarga() * trans.getJumlah());
+                    proses[i][6] = String.valueOf(transBaru.getBarang().getHarga() * transBaru.getJumlah());
                 }
-                proses[i][7] = String.valueOf(trans.getStatus());
+                proses[i][7] = String.valueOf(transBaru.getStatus());
+                proses[i][7] = "Belum Diproses";
             }
             modeltbl.addRow(proses[i]);
             i++;
-            trans = trans.next;
-        } while (trans != null);
+            transBaru = transBaru.next;
+        } while (transBaru != null);
         
         
     }
@@ -155,7 +161,31 @@ public class JFrameMenuAdmin extends javax.swing.JFrame {
 
     private void btnProsesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProsesActionPerformed
         // TODO add your handling code here:
+        if (trans != null) {
+            do {    
+                aksi = true;
+                if (aksi) {
+                    projectuas.MainApps.jual.prosesTransaksi(trans);
+                    System.out.println("sukses");
+                    String status = "Diproses";
+                    DefaultTableModel modeltbl = (DefaultTableModel)listProses.getModel();
+                    //int baris = modeltbl.getRowCount();
+
+                    modeltbl.setValueAt(status, baris, 7);
+                    baris++;
+                }
+                trans = trans.next;
+                break;
+            } while (trans.next != null);
+        } else{
+            JOptionPane.showMessageDialog(this, "Semua pesanan telah diproses");
+            System.out.println("Pesanan diproses semua");
+        }
         
+        /*if (trans == null) {
+            JOptionPane.showMessageDialog(this, "Semua pesanan telah diproses");
+            System.out.println("Pesanan diproses semua");
+        }*/
     }//GEN-LAST:event_btnProsesActionPerformed
 
     /**
