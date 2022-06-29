@@ -4,11 +4,14 @@
  */
 package jFrame;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author rizka
  */
 public class JFrameAdmin extends javax.swing.JFrame {
+    static int passAdmin = 123;
 
     /**
      * Creates new form JFrameAdmin
@@ -29,8 +32,9 @@ public class JFrameAdmin extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jPFadmin = new javax.swing.JPasswordField();
+        jTFPassadmin = new javax.swing.JPasswordField();
         jBtnMasukAdmin = new javax.swing.JButton();
+        BtnKembaliAdmin = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -42,11 +46,25 @@ public class JFrameAdmin extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Masukkan Password");
 
-        jPFadmin.setBackground(new java.awt.Color(204, 204, 204));
+        jTFPassadmin.setBackground(new java.awt.Color(204, 204, 204));
 
         jBtnMasukAdmin.setBackground(new java.awt.Color(153, 153, 255));
         jBtnMasukAdmin.setForeground(new java.awt.Color(0, 0, 0));
         jBtnMasukAdmin.setText("Masuk");
+        jBtnMasukAdmin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnMasukAdminActionPerformed(evt);
+            }
+        });
+
+        BtnKembaliAdmin.setBackground(new java.awt.Color(255, 51, 51));
+        BtnKembaliAdmin.setForeground(new java.awt.Color(255, 255, 255));
+        BtnKembaliAdmin.setText("Kembali");
+        BtnKembaliAdmin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnKembaliAdminActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -59,7 +77,7 @@ public class JFrameAdmin extends javax.swing.JFrame {
                         .addComponent(jBtnMasukAdmin)
                         .addGap(120, 120, 120))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jPFadmin, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTFPassadmin, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(68, 68, 68))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -67,6 +85,10 @@ public class JFrameAdmin extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addComponent(jLabel2))
                 .addGap(95, 95, 95))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(BtnKembaliAdmin)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -76,10 +98,12 @@ public class JFrameAdmin extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPFadmin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTFPassadmin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jBtnMasukAdmin)
-                .addContainerGap(259, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 213, Short.MAX_VALUE)
+                .addComponent(BtnKembaliAdmin)
+                .addGap(24, 24, 24))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -97,6 +121,18 @@ public class JFrameAdmin extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void BtnKembaliAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKembaliAdminActionPerformed
+        // TODO add your handling code here:
+        new jFrame.JFrameHome().show();
+        this.dispose();
+    }//GEN-LAST:event_BtnKembaliAdminActionPerformed
+
+    private void jBtnMasukAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnMasukAdminActionPerformed
+        // TODO add your handling code here:
+        new jFrame.JFrameMenuAdmin().show();
+        this.dispose();
+    }//GEN-LAST:event_jBtnMasukAdminActionPerformed
 
     /**
      * @param args the command line arguments
@@ -134,10 +170,11 @@ public class JFrameAdmin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BtnKembaliAdmin;
     private javax.swing.JButton jBtnMasukAdmin;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JPasswordField jPFadmin;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPasswordField jTFPassadmin;
     // End of variables declaration//GEN-END:variables
 }

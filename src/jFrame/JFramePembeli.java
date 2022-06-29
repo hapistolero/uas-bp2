@@ -10,6 +10,7 @@ package jFrame;
  * @author rizka
  */
 public class JFramePembeli extends javax.swing.JFrame {
+    public static String namaPembeli = "";
 
     /** Creates new form JFramePembeli */
     public JFramePembeli() {
@@ -30,6 +31,7 @@ public class JFramePembeli extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jTFPembeli = new javax.swing.JTextField();
         jBtnMasukPembeli = new javax.swing.JButton();
+        BtnKembaliPb = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -43,10 +45,29 @@ public class JFramePembeli extends javax.swing.JFrame {
 
         jTFPembeli.setBackground(new java.awt.Color(204, 204, 204));
         jTFPembeli.setForeground(new java.awt.Color(102, 102, 102));
+        jTFPembeli.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTFPembeliActionPerformed(evt);
+            }
+        });
 
         jBtnMasukPembeli.setBackground(new java.awt.Color(153, 153, 255));
         jBtnMasukPembeli.setForeground(new java.awt.Color(0, 0, 0));
         jBtnMasukPembeli.setText("Masuk");
+        jBtnMasukPembeli.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnMasukPembeliActionPerformed(evt);
+            }
+        });
+
+        BtnKembaliPb.setBackground(new java.awt.Color(255, 51, 51));
+        BtnKembaliPb.setForeground(new java.awt.Color(255, 255, 255));
+        BtnKembaliPb.setText("Kembali");
+        BtnKembaliPb.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnKembaliPbActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -67,7 +88,10 @@ public class JFramePembeli extends javax.swing.JFrame {
                         .addComponent(jTFPembeli, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(126, 126, 126)
-                        .addComponent(jBtnMasukPembeli)))
+                        .addComponent(jBtnMasukPembeli))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addComponent(BtnKembaliPb)))
                 .addContainerGap(76, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -81,7 +105,9 @@ public class JFramePembeli extends javax.swing.JFrame {
                 .addComponent(jTFPembeli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jBtnMasukPembeli)
-                .addContainerGap(251, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 210, Short.MAX_VALUE)
+                .addComponent(BtnKembaliPb)
+                .addGap(19, 19, 19))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -99,6 +125,24 @@ public class JFramePembeli extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void BtnKembaliPbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKembaliPbActionPerformed
+        // TODO add your handling code here:
+        new jFrame.JFrameHome().show();
+        this.dispose();
+    }//GEN-LAST:event_BtnKembaliPbActionPerformed
+
+    private void jBtnMasukPembeliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnMasukPembeliActionPerformed
+        // TODO add your handling code here:
+        String namaPb = jTFPembeli.getText();
+        namaPembeli = namaPb;
+        new jFrame.JFrameMenuPembeli().show();
+        this.dispose();
+    }//GEN-LAST:event_jBtnMasukPembeliActionPerformed
+
+    private void jTFPembeliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFPembeliActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTFPembeliActionPerformed
 
     /**
      * @param args the command line arguments
@@ -136,6 +180,7 @@ public class JFramePembeli extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BtnKembaliPb;
     private javax.swing.JButton jBtnMasukPembeli;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

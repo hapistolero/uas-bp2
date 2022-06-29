@@ -4,12 +4,17 @@
  */
 package jFrame;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author rizka
  */
 public class JFrameMember extends javax.swing.JFrame {
-
+    static int idl = 1, pwd1 = 123;
+    static int id2 = 2, pwd2 = 222;
+    static int id3 = 3, pwd3 = 333;
+    public static int idMbr;
     /**
      * Creates new form JFrameMember
      */
@@ -31,8 +36,9 @@ public class JFrameMember extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jTFUserMember = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jPFUserMember = new javax.swing.JPasswordField();
+        jTFPassMember = new javax.swing.JPasswordField();
         jBtnMasukMember = new javax.swing.JButton();
+        BtnKembaliMember = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -49,21 +55,31 @@ public class JFrameMember extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Password : ");
 
-        jPFUserMember.setBackground(new java.awt.Color(204, 204, 204));
-        jPFUserMember.setForeground(new java.awt.Color(0, 0, 0));
+        jTFPassMember.setBackground(new java.awt.Color(204, 204, 204));
+        jTFPassMember.setForeground(new java.awt.Color(0, 0, 0));
 
         jBtnMasukMember.setBackground(new java.awt.Color(153, 153, 255));
         jBtnMasukMember.setForeground(new java.awt.Color(0, 0, 0));
         jBtnMasukMember.setText("Masuk");
+        jBtnMasukMember.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnMasukMemberActionPerformed(evt);
+            }
+        });
+
+        BtnKembaliMember.setBackground(new java.awt.Color(255, 51, 51));
+        BtnKembaliMember.setForeground(new java.awt.Color(255, 255, 255));
+        BtnKembaliMember.setText("Kembali");
+        BtnKembaliMember.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnKembaliMemberActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(118, 118, 118)
-                .addComponent(jBtnMasukMember)
-                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(68, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -72,7 +88,7 @@ public class JFrameMember extends javax.swing.JFrame {
                         .addGap(98, 98, 98))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jPFUserMember, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTFPassMember, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTFUserMember, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(62, 62, 62))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -81,6 +97,15 @@ public class JFrameMember extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addGap(126, 126, 126))))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(118, 118, 118)
+                        .addComponent(jBtnMasukMember))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addComponent(BtnKembaliMember)))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -94,10 +119,12 @@ public class JFrameMember extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPFUserMember, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTFPassMember, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jBtnMasukMember)
-                .addContainerGap(202, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 164, Short.MAX_VALUE)
+                .addComponent(BtnKembaliMember)
+                .addGap(16, 16, 16))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -113,6 +140,35 @@ public class JFrameMember extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void BtnKembaliMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKembaliMemberActionPerformed
+        // TODO add your handling code here:
+        new jFrame.JFrameHome().show();
+        this.dispose();
+    }//GEN-LAST:event_BtnKembaliMemberActionPerformed
+
+    private void jBtnMasukMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnMasukMemberActionPerformed
+        // TODO add your handling code here:
+        idMbr = Integer.parseInt(jTFUserMember.getText());
+        boolean valid = false;
+        int inputId = Integer.parseInt(jTFUserMember.getText());
+        int inputPass = Integer.parseInt(jTFPassMember.getText());
+        if (idl == inputId && pwd1 == inputPass) {
+            valid = true;
+        } else if (id2 == inputId && pwd2 == inputPass) {
+            valid = true;
+        } else if(id3 == inputId && pwd3 == inputPass) {
+            valid = true;
+        } else {
+            valid = false;
+        }
+        if (valid) {
+            new jFrame.JFrameMenuMember().show();
+            this.dispose();
+        } else {
+            JOptionPane.showMessageDialog(null, "ID/Password masih salah\n Silahkan coba lagi");
+        }
+    }//GEN-LAST:event_jBtnMasukMemberActionPerformed
 
     /**
      * @param args the command line arguments
@@ -150,12 +206,13 @@ public class JFrameMember extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BtnKembaliMember;
     private javax.swing.JButton jBtnMasukMember;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JPasswordField jPFUserMember;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPasswordField jTFPassMember;
     private javax.swing.JTextField jTFUserMember;
     // End of variables declaration//GEN-END:variables
 }

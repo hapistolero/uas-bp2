@@ -28,10 +28,10 @@ public class JFrameHome extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        btnPembeli = new javax.swing.JButton();
+        btnMember = new javax.swing.JButton();
+        btnAdmin = new javax.swing.JButton();
+        btnOwner = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -40,13 +40,33 @@ public class JFrameHome extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setText("Warungku");
 
-        jButton1.setText("Pembeli");
+        btnPembeli.setText("Pembeli");
+        btnPembeli.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPembeliActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("Member");
+        btnMember.setText("Member");
+        btnMember.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMemberActionPerformed(evt);
+            }
+        });
 
-        jButton3.setText("Admin");
+        btnAdmin.setText("Admin");
+        btnAdmin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAdminActionPerformed(evt);
+            }
+        });
 
-        jButton4.setText("Owner");
+        btnOwner.setText("Owner");
+        btnOwner.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOwnerActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -58,13 +78,13 @@ public class JFrameHome extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(24, 24, 24)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton1)
+                            .addComponent(btnPembeli)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jButton3)
-                                .addComponent(jButton2))
+                                .addComponent(btnAdmin)
+                                .addComponent(btnMember))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(3, 3, 3)
-                                .addComponent(jButton4))))
+                                .addComponent(btnOwner))))
                     .addComponent(jLabel1))
                 .addContainerGap(105, Short.MAX_VALUE))
         );
@@ -74,13 +94,13 @@ public class JFrameHome extends javax.swing.JFrame {
                 .addGap(151, 151, 151)
                 .addComponent(jLabel1)
                 .addGap(41, 41, 41)
-                .addComponent(jButton1)
+                .addComponent(btnPembeli)
                 .addGap(18, 18, 18)
-                .addComponent(jButton2)
+                .addComponent(btnMember)
                 .addGap(18, 18, 18)
-                .addComponent(jButton3)
+                .addComponent(btnAdmin)
                 .addGap(18, 18, 18)
-                .addComponent(jButton4)
+                .addComponent(btnOwner)
                 .addContainerGap(191, Short.MAX_VALUE))
         );
 
@@ -97,6 +117,30 @@ public class JFrameHome extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnPembeliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPembeliActionPerformed
+        // TODO add your handling code here:
+        new jFrame.JFramePembeli().show();
+        this.dispose();
+    }//GEN-LAST:event_btnPembeliActionPerformed
+
+    private void btnMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMemberActionPerformed
+        // TODO add your handling code here:
+        new jFrame.JFrameMember().show();
+        this.dispose();
+    }//GEN-LAST:event_btnMemberActionPerformed
+
+    private void btnAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdminActionPerformed
+        // TODO add your handling code here:
+        new jFrame.JFrameAdmin().show();
+        this.dispose();
+    }//GEN-LAST:event_btnAdminActionPerformed
+
+    private void btnOwnerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOwnerActionPerformed
+        // TODO add your handling code here:
+        new jFrame.JFrameOwner().show();
+        this.dispose();
+    }//GEN-LAST:event_btnOwnerActionPerformed
 
     /**
      * @param args the command line arguments
@@ -135,10 +179,10 @@ public class JFrameHome extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton btnAdmin;
+    private javax.swing.JButton btnMember;
+    private javax.swing.JButton btnOwner;
+    private javax.swing.JButton btnPembeli;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables

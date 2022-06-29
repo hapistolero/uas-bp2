@@ -11,9 +11,9 @@ public class cTransaksi {
     int jumlah ;
     int status;
     int idBarang;
-    cTransaksi next;
+    public cTransaksi next;
     
-    cTransaksi(String k, String p, cbarang b, int j, int s, int idBr){
+    public cTransaksi(String k, String p, cbarang b, int j, int s, int idBr){
         kode=k; pembeli=p; barang=b; jumlah= j; status=s; idBarang=idBr;
         next = null;
     }
