@@ -9,7 +9,7 @@ public class cDaftarTransaksi {
     int jumlahtr;
     
     
-    cDaftarTransaksi(){
+    public cDaftarTransaksi(){
         front=rear=null;
         jumlahtr=0;
     }
@@ -101,7 +101,7 @@ public class cDaftarTransaksi {
             front=depan;
             rear=belakang;
         }else{
-             rear.next=depan;
+            rear.next=depan;
             rear=belakang;
         }  
     }
@@ -138,7 +138,7 @@ public class cDaftarTransaksi {
         for (; t!=null; t=t.next) {
             if (t.getStatus()==1) {
                  nominal=nominal+t.getBarang().getHarga()*t.getJumlah();
-                if (t.getPembeli().equalsIgnoreCase("10")|t.getPembeli().equalsIgnoreCase("11")||t.getPembeli().equalsIgnoreCase("12")) {
+                if (t.getPembeli().equalsIgnoreCase("10")||t.getPembeli().equalsIgnoreCase("11")||t.getPembeli().equalsIgnoreCase("12")) {
                     nominal=nominal-(0.1*nominal);
                 }                                       
             }                
