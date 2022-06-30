@@ -130,8 +130,15 @@ public class JFrameAdmin extends javax.swing.JFrame {
 
     private void jBtnMasukAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnMasukAdminActionPerformed
         // TODO add your handling code here:
-        new jFrame.JFrameMenuAdmin().show();
-        this.dispose();
+        String pw = jTFPassadmin.getText();
+        if (pw.equalsIgnoreCase(String.valueOf(passAdmin))) {
+            new jFrame.JFrameMenuAdmin().show();
+            System.out.println("masuk menu admin");
+            this.dispose();
+        }else{
+            JOptionPane.showMessageDialog(this, "Password Salah");
+        }
+        
     }//GEN-LAST:event_jBtnMasukAdminActionPerformed
 
     /**

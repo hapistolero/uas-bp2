@@ -4,6 +4,8 @@
  */
 package jFrame;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author rizka
@@ -13,6 +15,9 @@ public class JFrameOwner extends javax.swing.JFrame {
     /**
      * Creates new form JFrameOwner
      */
+    
+    int pwd = 123;
+    
     public JFrameOwner() {
         initComponents();
     }
@@ -48,6 +53,11 @@ public class JFrameOwner extends javax.swing.JFrame {
         jBtnMasukOwner.setBackground(new java.awt.Color(153, 153, 255));
         jBtnMasukOwner.setForeground(new java.awt.Color(0, 0, 0));
         jBtnMasukOwner.setText("Masuk");
+        jBtnMasukOwner.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnMasukOwnerActionPerformed(evt);
+            }
+        });
 
         BtnKembaliOwner.setBackground(new java.awt.Color(255, 51, 51));
         BtnKembaliOwner.setForeground(new java.awt.Color(255, 255, 255));
@@ -119,6 +129,17 @@ public class JFrameOwner extends javax.swing.JFrame {
         new jFrame.JFrameHome().show();
         this.dispose();
     }//GEN-LAST:event_BtnKembaliOwnerActionPerformed
+
+    private void jBtnMasukOwnerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnMasukOwnerActionPerformed
+        // TODO add your handling code here:
+        String pass = jPFOwner.getText();
+        if (Integer.parseInt(pass)==123) {
+            new jFrame.JFrameMenuOwner().show();
+            this.dispose();
+        }else{
+            JOptionPane.showMessageDialog(this, "Password Salah");
+        }
+    }//GEN-LAST:event_jBtnMasukOwnerActionPerformed
 
     /**
      * @param args the command line arguments

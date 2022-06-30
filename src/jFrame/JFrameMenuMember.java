@@ -15,7 +15,7 @@ import projectuas.cTransaksi;
  * @author rizka
  */
 public class JFrameMenuMember extends javax.swing.JFrame {
-    public static cDaftarTransaksi beli = new cDaftarTransaksi();
+    public static cDaftarTransaksi beli;
     /**
      * Creates new form JFrameMenuMember
      */
@@ -49,6 +49,7 @@ public class JFrameMenuMember extends javax.swing.JFrame {
         modelBr.addRow(barang5);
         
         projectuas.MainApps.kode++;
+        beli = new cDaftarTransaksi();
     }
 
     /**
@@ -289,12 +290,11 @@ public class JFrameMenuMember extends javax.swing.JFrame {
 
     private void btnKeluarMbrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKeluarMbrActionPerformed
         // TODO add your handling code here:
-        new jFrame.JFrameHome().show();
-        this.dispose();
         if(beli.getFront() != null) {
             projectuas.MainApps.jual.sambung(beli.getFront(), beli.getRear());
-            beli.LihatTransaksi();
         }
+        new jFrame.JFrameHome().show();
+        this.dispose();
         
     }//GEN-LAST:event_btnKeluarMbrActionPerformed
 
