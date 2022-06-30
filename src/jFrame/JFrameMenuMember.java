@@ -238,19 +238,19 @@ public class JFrameMenuMember extends javax.swing.JFrame {
             int row = listBarangMember.getSelectedRow();
             String barang = String.valueOf(modelBr.getValueAt(row, 0));
             if (barang.equalsIgnoreCase("panci")) {
-                projectuas.MainApps.br = new cTransaksi( String.valueOf(projectuas.MainApps.kode), String.valueOf(JFrameMember.idMbr), projectuas.MainApps.brg1, jml, 0, 1);
+                projectuas.MainApps.br = new cTransaksi( String.valueOf(projectuas.MainApps.kode), String.valueOf(JFrameMember.idMbr), projectuas.MainApps.brg1, jml, "Belum diproses", 1);
             } 
             else if (barang.equalsIgnoreCase("Blender")) {
-                projectuas.MainApps.br = new cTransaksi( String.valueOf(projectuas.MainApps.kode), String.valueOf(JFrameMember.idMbr), projectuas.MainApps.brg2, jml, 0, 2);
+                projectuas.MainApps.br = new cTransaksi( String.valueOf(projectuas.MainApps.kode), String.valueOf(JFrameMember.idMbr), projectuas.MainApps.brg2, jml, "Belum diproses", 2);
             }
             else if (barang.equalsIgnoreCase("Ulekan")) {
-                projectuas.MainApps.br = new cTransaksi( String.valueOf(projectuas.MainApps.kode), String.valueOf(JFrameMember.idMbr), projectuas.MainApps.brg3, jml, 0, 3);
+                projectuas.MainApps.br = new cTransaksi( String.valueOf(projectuas.MainApps.kode), String.valueOf(JFrameMember.idMbr), projectuas.MainApps.brg3, jml, "Belum diproses", 3);
             }
             else if (barang.equalsIgnoreCase("Mug")) {
-                projectuas.MainApps.br = new cTransaksi( String.valueOf(projectuas.MainApps.kode), String.valueOf(JFrameMember.idMbr), projectuas.MainApps.brg4, jml, 0, 4);
+                projectuas.MainApps.br = new cTransaksi( String.valueOf(projectuas.MainApps.kode), String.valueOf(JFrameMember.idMbr), projectuas.MainApps.brg4, jml, "Belum diproses", 4);
             }
             else if (barang.equalsIgnoreCase("Wajan")) {
-                projectuas.MainApps.br = new cTransaksi( String.valueOf(projectuas.MainApps.kode), String.valueOf(JFrameMember.idMbr), projectuas.MainApps.brg5, jml, 0, 5);
+                projectuas.MainApps.br = new cTransaksi( String.valueOf(projectuas.MainApps.kode), String.valueOf(JFrameMember.idMbr), projectuas.MainApps.brg5, jml, "Belum diproses", 5);
             }
             beli.AddTransaksi(projectuas.MainApps.br);
             projectuas.MainApps.jmlpesanan++;

@@ -19,7 +19,9 @@ public class JFrameMenuAdmin extends javax.swing.JFrame {
      */
     static boolean aksi = false;
     cTransaksi trans = projectuas.MainApps.jual.getFront(); 
+    
     static int baris = 0;
+    //static String status;
     
     public JFrameMenuAdmin() {
         initComponents();
@@ -28,8 +30,10 @@ public class JFrameMenuAdmin extends javax.swing.JFrame {
         String proses[][] = new String[jmlPesan][8];
         do {
             int i = 0;
-            if(transBaru.getStatus() == 0) {
-                proses[i][0] = transBaru.getKode();
+//            if(transBaru.getStatus() == 0) {
+//                
+//            }
+            proses[i][0] = transBaru.getKode();
                 proses[i][1] = transBaru.getPembeli();
                 proses[i][2] = transBaru.getBarang().getNama();
                 proses[i][3] = String.valueOf(transBaru.getBarang().getHarga());
@@ -43,8 +47,7 @@ public class JFrameMenuAdmin extends javax.swing.JFrame {
                     proses[i][6] = String.valueOf(transBaru.getBarang().getHarga() * transBaru.getJumlah());
                 }
                 proses[i][7] = String.valueOf(transBaru.getStatus());
-                proses[i][7] = "Belum Diproses";
-            }
+                proses[i][7] = transBaru.getStatus();
             modeltbl.addRow(proses[i]);
             i++;
             transBaru = transBaru.next;
@@ -98,6 +101,11 @@ public class JFrameMenuAdmin extends javax.swing.JFrame {
 
         jButton1.setBackground(new java.awt.Color(255, 51, 51));
         jButton1.setText("KELUAR");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         btnProses.setBackground(new java.awt.Color(0, 153, 0));
         btnProses.setText("PROSES TRANSAKSI");
@@ -161,17 +169,25 @@ public class JFrameMenuAdmin extends javax.swing.JFrame {
 
     private void btnProsesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProsesActionPerformed
         // TODO add your handling code here:
-        if (trans != null) {
+        boolean harusProses = false;
+        for (cTransaksi t = projectuas.MainApps.jual.getFront(); t!= null; t=t.next) {
+            if(t.getStatus().equalsIgnoreCase("Belum diproses")) {
+                harusProses = true;
+                trans = t;
+                break;
+            }
+        }
+        if (harusProses) {
             do {    
                 aksi = true;
                 if (aksi) {
                     projectuas.MainApps.jual.prosesTransaksi(trans);
                     System.out.println("sukses");
-                    String status = "Diproses";
+                    //status = "Diproses";
                     DefaultTableModel modeltbl = (DefaultTableModel)listProses.getModel();
                     //int baris = modeltbl.getRowCount();
 
-                    modeltbl.setValueAt(status, baris, 7);
+                    modeltbl.setValueAt(trans.getStatus(), baris, 7);
                     baris++;
                 }
                 trans = trans.next;
@@ -187,6 +203,12 @@ public class JFrameMenuAdmin extends javax.swing.JFrame {
             System.out.println("Pesanan diproses semua");
         }*/
     }//GEN-LAST:event_btnProsesActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        new jFrame.JFrameHome().show();
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
