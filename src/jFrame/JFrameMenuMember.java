@@ -225,39 +225,51 @@ public class JFrameMenuMember extends javax.swing.JFrame {
 
     private void btnTambahMbrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTambahMbrActionPerformed
         // TODO add your handling code here:
+        boolean tambah = false;
         String jb = JOptionPane.showInputDialog(this,"Masukkan jumlah barang : ");
-        int jml = Integer.parseInt(jb);
-        DefaultTableModel modelBr = (DefaultTableModel) listBarangMember.getModel();
-        int row = listBarangMember.getSelectedRow();
-        String barang = String.valueOf(modelBr.getValueAt(row, 0));
-        if (barang.equalsIgnoreCase("panci")) {
-            projectuas.MainApps.br = new cTransaksi( String.valueOf(projectuas.MainApps.kode), String.valueOf(JFrameMember.idMbr), projectuas.MainApps.brg1, jml, 0, 1);
-        } 
-        else if (barang.equalsIgnoreCase("Blender")) {
-            projectuas.MainApps.br = new cTransaksi( String.valueOf(projectuas.MainApps.kode), String.valueOf(JFrameMember.idMbr), projectuas.MainApps.brg2, jml, 0, 2);
-        }
-        else if (barang.equalsIgnoreCase("Ulekan")) {
-            projectuas.MainApps.br = new cTransaksi( String.valueOf(projectuas.MainApps.kode), String.valueOf(JFrameMember.idMbr), projectuas.MainApps.brg3, jml, 0, 3);
-        }
-        else if (barang.equalsIgnoreCase("Mug")) {
-            projectuas.MainApps.br = new cTransaksi( String.valueOf(projectuas.MainApps.kode), String.valueOf(JFrameMember.idMbr), projectuas.MainApps.brg4, jml, 0, 4);
-        }
-        else if (barang.equalsIgnoreCase("Wajan")) {
-            projectuas.MainApps.br = new cTransaksi( String.valueOf(projectuas.MainApps.kode), String.valueOf(JFrameMember.idMbr), projectuas.MainApps.brg5, jml, 0, 5);
-        }
-        beli.AddTransaksi(projectuas.MainApps.br);
-        projectuas.MainApps.jmlpesanan++;
         
-        // Update Tabel Keranjang
-        DefaultTableModel modelCart = (DefaultTableModel)KeranjangMember.getModel();
+        if(jb != null) {
+            tambah = true;
+        }
         
-        String barangBaru[] = new String[5];
-        barangBaru[0] = projectuas.MainApps.br.getBarang().getNama();
-        barangBaru[1] = String.valueOf(jml);
-        barangBaru[2] = String.valueOf(projectuas.MainApps.br.getBarang().getHarga());
-        barangBaru[3] = String.valueOf(projectuas.MainApps.br.getBarang().getHarga()*0.05);
-        barangBaru[4] = String.valueOf((projectuas.MainApps.br.getBarang().getHarga()*0.95) * jml);
-        modelCart.addRow(barangBaru);
+        if(tambah) {
+            int jml = Integer.parseInt(jb);
+            DefaultTableModel modelBr = (DefaultTableModel) listBarangMember.getModel();
+            int row = listBarangMember.getSelectedRow();
+            String barang = String.valueOf(modelBr.getValueAt(row, 0));
+            if (barang.equalsIgnoreCase("panci")) {
+                projectuas.MainApps.br = new cTransaksi( String.valueOf(projectuas.MainApps.kode), String.valueOf(JFrameMember.idMbr), projectuas.MainApps.brg1, jml, 0, 1);
+            } 
+            else if (barang.equalsIgnoreCase("Blender")) {
+                projectuas.MainApps.br = new cTransaksi( String.valueOf(projectuas.MainApps.kode), String.valueOf(JFrameMember.idMbr), projectuas.MainApps.brg2, jml, 0, 2);
+            }
+            else if (barang.equalsIgnoreCase("Ulekan")) {
+                projectuas.MainApps.br = new cTransaksi( String.valueOf(projectuas.MainApps.kode), String.valueOf(JFrameMember.idMbr), projectuas.MainApps.brg3, jml, 0, 3);
+            }
+            else if (barang.equalsIgnoreCase("Mug")) {
+                projectuas.MainApps.br = new cTransaksi( String.valueOf(projectuas.MainApps.kode), String.valueOf(JFrameMember.idMbr), projectuas.MainApps.brg4, jml, 0, 4);
+            }
+            else if (barang.equalsIgnoreCase("Wajan")) {
+                projectuas.MainApps.br = new cTransaksi( String.valueOf(projectuas.MainApps.kode), String.valueOf(JFrameMember.idMbr), projectuas.MainApps.brg5, jml, 0, 5);
+            }
+            beli.AddTransaksi(projectuas.MainApps.br);
+            projectuas.MainApps.jmlpesanan++;
+
+            // Update Tabel Keranjang
+            DefaultTableModel modelCart = (DefaultTableModel)KeranjangMember.getModel();
+
+            String barangBaru[] = new String[5];
+            barangBaru[0] = projectuas.MainApps.br.getBarang().getNama();
+            barangBaru[1] = String.valueOf(jml);
+            barangBaru[2] = String.valueOf(projectuas.MainApps.br.getBarang().getHarga());
+            barangBaru[3] = String.valueOf(projectuas.MainApps.br.getBarang().getHarga()*0.05);
+            barangBaru[4] = String.valueOf((projectuas.MainApps.br.getBarang().getHarga()*0.95) * jml);
+            modelCart.addRow(barangBaru);
+        }
+        else {
+            JOptionPane.showMessageDialog(this, "Batal menambahkan!");
+        }
+        
     }//GEN-LAST:event_btnTambahMbrActionPerformed
 
     private void btnHapusMbrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHapusMbrActionPerformed
@@ -279,8 +291,11 @@ public class JFrameMenuMember extends javax.swing.JFrame {
         // TODO add your handling code here:
         new jFrame.JFrameHome().show();
         this.dispose();
-        projectuas.MainApps.jual.sambung(beli.getFront(), beli.getRear());
-        beli.LihatTransaksi();
+        if(beli.getFront() != null) {
+            projectuas.MainApps.jual.sambung(beli.getFront(), beli.getRear());
+            beli.LihatTransaksi();
+        }
+        
     }//GEN-LAST:event_btnKeluarMbrActionPerformed
 
     /**
