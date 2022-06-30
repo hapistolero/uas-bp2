@@ -17,17 +17,6 @@ public class MainApps {
     public static void main(String[] args) {
         new jFrame.JFrameHome().show();
         
-        // Master barang
-        
-        
-        // Master Member 
-        
-        
-        
-        int pilih = 0;
-        int pilih2 = 0;
-        int pilih3 = 0, piliha = 0;
-        
         br = null;
     }
 }

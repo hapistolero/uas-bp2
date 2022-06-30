@@ -70,20 +70,20 @@ public class UASBP2 {
                                 System.out.print("Jumlah Barang : ");
                                 jumlah = sc.nextInt();
                                 if (pilih3 == 1) {
-                                    br = new cTransaksi(String.valueOf(kode), nama, brg1, jumlah, 0, 1);
+                                    br = new cTransaksi(String.valueOf(kode), nama, brg1, jumlah, "Belum diproses", 1);
 
                                 } else if (pilih3 == 2) {
-                                    br = new cTransaksi(String.valueOf(kode), nama, brg2, jumlah, 0, 2);
+                                    br = new cTransaksi(String.valueOf(kode), nama, brg2, jumlah, "Belum diproses", 2);
 
                                 } else if (pilih3 == 3) {
 
-                                    br = new cTransaksi(String.valueOf(kode), nama, brg3, jumlah, 0, 3);
+                                    br = new cTransaksi(String.valueOf(kode), nama, brg3, jumlah, "Belum diproses", 3);
 
                                 } else if (pilih3 == 4) {
-                                    br = new cTransaksi(String.valueOf(kode), nama, brg4, jumlah, 0, 4);
+                                    br = new cTransaksi(String.valueOf(kode), nama, brg4, jumlah, "Belum diproses", 4);
 
                                 } else if (pilih3 == 5) {
-                                    br = new cTransaksi(String.valueOf(kode), nama, brg5, jumlah, 0, 5);
+                                    br = new cTransaksi(String.valueOf(kode), nama, brg5, jumlah, "Belum diproses", 5);
 
                                 }
 
@@ -172,19 +172,19 @@ public class UASBP2 {
                                             jumlah = sc.nextInt();
 
                                             if (pilih3 == 1) {
-                                                br = new cTransaksi(String.valueOf(kode), String.valueOf(id), brg1, jumlah, 0, 1);
+                                                br = new cTransaksi(String.valueOf(kode), String.valueOf(id), brg1, jumlah, "Belum diproses", 1);
 
                                             } else if (pilih3 == 2) {
-                                                br = new cTransaksi(String.valueOf(kode), String.valueOf(id), brg2, jumlah, 0, 2);
+                                                br = new cTransaksi(String.valueOf(kode), String.valueOf(id), brg2, jumlah, "Belum diproses", 2);
 
                                             } else if (pilih3 == 3) {
-                                                br = new cTransaksi(String.valueOf(kode), String.valueOf(id), brg3, jumlah, 0, 3);
+                                                br = new cTransaksi(String.valueOf(kode), String.valueOf(id), brg3, jumlah, "Belum diproses", 3);
 
                                             } else if (pilih3 == 4) {
-                                                br = new cTransaksi(String.valueOf(kode), String.valueOf(id), brg4, jumlah, 0, 4);
+                                                br = new cTransaksi(String.valueOf(kode), String.valueOf(id), brg4, jumlah, "Belum diproses", 4);
 
                                             } else if (pilih3 == 5) {
-                                                br = new cTransaksi(String.valueOf(kode), String.valueOf(id), brg5, jumlah, 0, 5);
+                                                br = new cTransaksi(String.valueOf(kode), String.valueOf(id), brg5, jumlah, "Belum diproses", 5);
 
                                             }
 
@@ -262,7 +262,7 @@ public class UASBP2 {
                     //prosess
                     cTransaksi t = jual.getFront();
                     do {
-                        if (t.getStatus() == 0) {
+                        if (t.getStatus().equalsIgnoreCase("Belum diproses")) {
                             System.out.println("Kode :" + t.getKode());
                             System.out.println("Pembeli :" + t.getPembeli());
                             System.out.println("Barang :" + t.getBarang().getNama());

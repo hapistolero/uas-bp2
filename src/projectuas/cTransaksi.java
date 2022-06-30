@@ -9,16 +9,16 @@ public class cTransaksi {
     String pembeli;
     cbarang barang;
     int jumlah ;
-    int status;
+    String status;
     int idBarang;
     public cTransaksi next;
     
-    public cTransaksi(String k, String p, cbarang b, int j, int s, int idBr){
+    public cTransaksi(String k, String p, cbarang b, int j, String s, int idBr){
         kode=k; pembeli=p; barang=b; jumlah= j; status=s; idBarang=idBr;
         next = null;
     }
 
-    public void setStatus(int s){
+    public void setStatus(String s){
         status=s;
     }
     public String getKode(){
@@ -40,7 +40,7 @@ public class cTransaksi {
     public int getJumlah(){
         return jumlah;
     }
-    public int getStatus(){
+    public String getStatus(){
         return status;
     }
     

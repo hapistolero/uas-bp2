@@ -107,14 +107,14 @@ public class cDaftarTransaksi {
     }
 
     public void prosesTransaksi(cTransaksi t){
-        t.setStatus(1);
+        t.setStatus("Diproses");
     }
 
     public int lihatproses(){
         cTransaksi t=front;
         int proses=0;
         for (; t!=null; t=t.next) {
-            if (t.getStatus()==1) {
+            if (t.getStatus().equalsIgnoreCase("Diproses")) {
                 proses++;   
             }
         }
@@ -125,7 +125,7 @@ public class cDaftarTransaksi {
         cTransaksi t=front;
         int unproses=0;
         for (; t!=null; t=t.next) {
-            if (t.getStatus()==0) {
+            if (t.getStatus().equalsIgnoreCase("Belum diproses")) {
                 unproses++;                    
             }
         }
@@ -136,7 +136,7 @@ public class cDaftarTransaksi {
         cTransaksi t=front;
         double nominal=0;
         for (; t!=null; t=t.next) {
-            if (t.getStatus()==1) {
+            if (t.getStatus().equalsIgnoreCase("Diproses")) {
                  nominal=nominal+t.getBarang().getHarga()*t.getJumlah();
                 if (t.getPembeli().equalsIgnoreCase("10")||t.getPembeli().equalsIgnoreCase("11")||t.getPembeli().equalsIgnoreCase("12")) {
                     nominal=nominal-(0.1*nominal);
@@ -149,14 +149,13 @@ public class cDaftarTransaksi {
     public double lihatunpemasukan(){
         cTransaksi t=front;
         double nominal=0;
-
         for (; t!=null; t=t.next) {
-            if (t.getStatus()==0) {
+            if (t.getStatus().equalsIgnoreCase("Belum diproses")) {
 
                  nominal=nominal+t.getBarang().getHarga()*t.getJumlah();
-                if (t.getPembeli().equalsIgnoreCase("10")|t.getPembeli().equalsIgnoreCase("11")||t.getPembeli().equalsIgnoreCase("12")) {
-                    nominal=nominal-(0.1*nominal);
-                }                                       
+                if (t.getPembeli().equalsIgnoreCase("10")||t.getPembeli().equalsIgnoreCase("11")||t.getPembeli().equalsIgnoreCase("12")) {
+                    nominal=nominal-(0.05*nominal);
+                }
             }                
         }
         return nominal;
@@ -165,7 +164,7 @@ public class cDaftarTransaksi {
         cTransaksi t=front;
         double nominal=0;
         for (; t!=null; t=t.next) {
-            if (t.getIdBrg()==1&&t.getStatus()==1) {
+            if (t.getIdBrg()==1&&t.getStatus().equalsIgnoreCase("Diproses")) {
                  nominal=nominal+t.getBarang().getHarga()*t.getJumlah();
                 if (t.getPembeli().equalsIgnoreCase("10")|t.getPembeli().equalsIgnoreCase("11")||t.getPembeli().equalsIgnoreCase("12")) {
                     nominal=nominal-(0.1*nominal);
@@ -179,7 +178,7 @@ public class cDaftarTransaksi {
         cTransaksi t=front;
         double nominal=0;
         for (; t!=null; t=t.next) {
-            if (t.getIdBrg()==1&&t.getStatus()==1) {
+            if (t.getIdBrg()==1&&t.getStatus().equalsIgnoreCase("Diproses")) {
                  nominal=nominal+t.getBarang().getHarga()*t.getJumlah();
                   if (t.getPembeli().equalsIgnoreCase("10")|t.getPembeli().equalsIgnoreCase("11")||t.getPembeli().equalsIgnoreCase("12")) {
                     nominal=nominal-(0.1*nominal);
@@ -199,7 +198,7 @@ public class cDaftarTransaksi {
        cTransaksi t=front;
       double nominal=0;
       for (; t!=null; t=t.next) {
-        if (t.getIdBrg()==2&&t.getStatus()==1) {
+        if (t.getIdBrg()==2&&t.getStatus().equalsIgnoreCase("Diproses")) {
             nominal=nominal+t.getBarang().getHarga()*t.getJumlah();
             if (t.getPembeli().equalsIgnoreCase("10")|t.getPembeli().equalsIgnoreCase("11")||t.getPembeli().equalsIgnoreCase("12")) {
                 nominal=nominal-(0.1*nominal);
@@ -219,7 +218,7 @@ public class cDaftarTransaksi {
         cTransaksi t=front;
         double nominal=0;
         for (; t!=null; t=t.next) {
-            if (t.getIdBrg()==3&&t.getStatus()==1) {
+            if (t.getIdBrg()==3&&t.getStatus().equalsIgnoreCase("Diproses")) {
                 nominal=nominal+t.getBarang().getHarga()*t.getJumlah();
                 if (t.getPembeli().equalsIgnoreCase("10")|t.getPembeli().equalsIgnoreCase("11")||t.getPembeli().equalsIgnoreCase("12")) {
                     nominal=nominal-(0.1*nominal);
@@ -238,7 +237,7 @@ public class cDaftarTransaksi {
         cTransaksi t=front;
         double nominal=0;
         for (; t!=null; t=t.next) {
-            if (t.getIdBrg()==4&&t.getStatus()==1) {
+            if (t.getIdBrg()==4&&t.getStatus().equalsIgnoreCase("Diproses")) {
                 nominal=nominal+t.getBarang().getHarga()*t.getJumlah();
                 if (t.getPembeli().equalsIgnoreCase("10")|t.getPembeli().equalsIgnoreCase("11")||t.getPembeli().equalsIgnoreCase("12")) {
                     nominal=nominal-(0.1*nominal);
@@ -257,7 +256,7 @@ public class cDaftarTransaksi {
         cTransaksi t=front;
         double nominal=0;
         for (; t!=null; t=t.next) {
-            if (t.getIdBrg()==5&&t.getStatus()==1) {
+            if (t.getIdBrg()==5&&t.getStatus().equalsIgnoreCase("Diproses")) {
                 nominal=nominal+t.getBarang().getHarga()*t.getJumlah();
                 if (t.getPembeli().equalsIgnoreCase("10")|t.getPembeli().equalsIgnoreCase("11")||t.getPembeli().equalsIgnoreCase("12")) {
                     nominal=nominal-(0.1*nominal);
@@ -276,7 +275,7 @@ public class cDaftarTransaksi {
         cTransaksi t=front;
         double nominal=0;
         for (; t!=null; t=t.next) {
-            if (t.getIdBrg()==2&&t.getStatus()==1) {
+            if (t.getIdBrg()==2&&t.getStatus().equalsIgnoreCase("Diproses")) {
                 nominal=nominal+t.getBarang().getHarga()*t.getJumlah();
                 if (t.getPembeli().equalsIgnoreCase("10")|t.getPembeli().equalsIgnoreCase("11")||t.getPembeli().equalsIgnoreCase("12")) {
                     nominal=nominal-(0.1*nominal);
@@ -291,7 +290,7 @@ public class cDaftarTransaksi {
         cTransaksi t=front;
         double nominal=0;
         for (; t!=null; t=t.next) {
-            if (t.getIdBrg()==3&&t.getStatus()==1) {
+            if (t.getIdBrg()==3&&t.getStatus().equalsIgnoreCase("Diproses")) {
                  nominal=nominal+t.getBarang().getHarga()*t.getJumlah();
                 if (t.getPembeli().equalsIgnoreCase("10")|t.getPembeli().equalsIgnoreCase("11")||t.getPembeli().equalsIgnoreCase("12")) {
                     nominal=nominal-(0.1*nominal);
@@ -306,7 +305,7 @@ public class cDaftarTransaksi {
         cTransaksi t=front;
         double nominal=0;
         for (; t!=null; t=t.next) {
-            if (t.getIdBrg()==4&&t.getStatus()==1) {
+            if (t.getIdBrg()==4&&t.getStatus().equalsIgnoreCase("Diproses")) {
                 nominal=nominal+t.getBarang().getHarga()*t.getJumlah();
                 if (t.getPembeli().equalsIgnoreCase("10")|t.getPembeli().equalsIgnoreCase("11")||t.getPembeli().equalsIgnoreCase("12")) {
                     nominal=nominal-(0.1*nominal);
@@ -321,7 +320,7 @@ public class cDaftarTransaksi {
         cTransaksi t=front;
         double nominal=0;
         for (; t!=null; t=t.next) {
-            if (t.getIdBrg()==5&&t.getStatus()==1) {
+            if (t.getIdBrg()==5&&t.getStatus().equalsIgnoreCase("Diproses")) {
                 nominal=nominal+t.getBarang().getHarga()*t.getJumlah();
                 if (t.getPembeli().equalsIgnoreCase("10")|t.getPembeli().equalsIgnoreCase("11")||t.getPembeli().equalsIgnoreCase("12")) {
                     nominal=nominal-(0.1*nominal);
@@ -336,7 +335,7 @@ public class cDaftarTransaksi {
         cTransaksi t=front;
         double nominal=0;
         for (; t!=null; t=t.next) {
-            if (t.getStatus()==1&&t.getPembeli().equalsIgnoreCase("10")) {
+            if (t.getStatus().equalsIgnoreCase("Diproses")&&t.getPembeli().equalsIgnoreCase("10")) {
                 nominal=nominal+t.getBarang().getHarga()*t.getJumlah();
                 if (t.getPembeli().equalsIgnoreCase("10")) {
                     nominal=nominal-(0.1*nominal);
@@ -351,7 +350,7 @@ public class cDaftarTransaksi {
         cTransaksi t=front;
         double nominal=0;
         for (; t!=null; t=t.next) {
-            if (t.getStatus()==1&&t.getPembeli().equalsIgnoreCase("11")) {
+            if (t.getStatus().equalsIgnoreCase("Diproses")&&t.getPembeli().equalsIgnoreCase("11")) {
                  nominal=nominal+t.getBarang().getHarga()*t.getJumlah();
                 if (t.getPembeli().equalsIgnoreCase("11")) {
                     nominal=nominal-(0.1*nominal);
@@ -366,7 +365,7 @@ public class cDaftarTransaksi {
         cTransaksi t=front;
         double nominal=0;
         for (; t!=null; t=t.next) {
-            if (t.getStatus()==1&&t.getPembeli().equalsIgnoreCase("12")) {
+            if (t.getStatus().equalsIgnoreCase("Diproses")&&t.getPembeli().equalsIgnoreCase("12")) {
                 nominal=nominal+t.getBarang().getHarga()*t.getJumlah();
                 if (t.getPembeli().equalsIgnoreCase("12")) {
                     nominal=nominal-(0.1*nominal);
