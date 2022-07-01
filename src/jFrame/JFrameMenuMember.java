@@ -19,6 +19,9 @@ public class JFrameMenuMember extends javax.swing.JFrame {
     /**
      * Creates new form JFrameMenuMember
      */
+    
+    int total = 0;
+    
     public JFrameMenuMember() {
         initComponents();
         DefaultTableModel modelBr = (DefaultTableModel)listBarangMember.getModel();
@@ -69,10 +72,11 @@ public class JFrameMenuMember extends javax.swing.JFrame {
         KeranjangMember = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
         btnTambahMbr = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnCheckoutMember = new javax.swing.JButton();
         btnHapusMbr = new javax.swing.JButton();
         btnKeluarMbr = new javax.swing.JButton();
         btnUbahPw = new javax.swing.JButton();
+        labelTotal = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -133,9 +137,14 @@ public class JFrameMenuMember extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setBackground(new java.awt.Color(102, 102, 255));
-        jButton2.setForeground(new java.awt.Color(0, 0, 0));
-        jButton2.setText("Checkout");
+        btnCheckoutMember.setBackground(new java.awt.Color(102, 102, 255));
+        btnCheckoutMember.setForeground(new java.awt.Color(0, 0, 0));
+        btnCheckoutMember.setText("Checkout");
+        btnCheckoutMember.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCheckoutMemberActionPerformed(evt);
+            }
+        });
 
         btnHapusMbr.setBackground(new java.awt.Color(102, 102, 102));
         btnHapusMbr.setForeground(new java.awt.Color(255, 255, 255));
@@ -158,6 +167,16 @@ public class JFrameMenuMember extends javax.swing.JFrame {
         btnUbahPw.setBackground(new java.awt.Color(255, 204, 0));
         btnUbahPw.setForeground(new java.awt.Color(0, 0, 0));
         btnUbahPw.setText("Ubah Password");
+        btnUbahPw.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUbahPwActionPerformed(evt);
+            }
+        });
+
+        labelTotal.setBackground(new java.awt.Color(0, 0, 0));
+        labelTotal.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        labelTotal.setForeground(new java.awt.Color(0, 0, 0));
+        labelTotal.setText("Total : ");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -167,22 +186,24 @@ public class JFrameMenuMember extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(jLabel1)
+                        .addGap(75, 75, 75)
+                        .addComponent(labelTotal))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnHapusMbr, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(jLabel1))
                             .addComponent(btnKeluarMbr, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnUbahPw)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnCheckoutMember, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnTambahMbr, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap())
@@ -195,19 +216,21 @@ public class JFrameMenuMember extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel1)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(labelTotal))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnTambahMbr, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCheckoutMember, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnHapusMbr, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnKeluarMbr, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnUbahPw, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addGap(49, 49, 49))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -218,7 +241,9 @@ public class JFrameMenuMember extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -264,8 +289,22 @@ public class JFrameMenuMember extends javax.swing.JFrame {
             barangBaru[1] = String.valueOf(jml);
             barangBaru[2] = String.valueOf(projectuas.MainApps.br.getBarang().getHarga());
             barangBaru[3] = String.valueOf(projectuas.MainApps.br.getBarang().getHarga()*0.05);
-            barangBaru[4] = String.valueOf((projectuas.MainApps.br.getBarang().getHarga()*0.95) * jml);
+            
+            
+            int subtotal = 0;
+            subtotal = (int) ((projectuas.MainApps.br.getBarang().getHarga()*0.95) * jml);
+            //barangBaru[4] = String.valueOf((projectuas.MainApps.br.getBarang().getHarga()*0.95) * jml);
+            barangBaru[4] = String.valueOf(subtotal);
+            total = total+subtotal;
             modelCart.addRow(barangBaru);
+            labelTotal.setText("Total : "+total);
+//            if (JFrameMember.idl==1) {
+//                labelTotal.setText("Total"+projectuas.MainApps.jual.totalmem10());
+//            }else if (JFrameMember.id2==2) {
+//                labelTotal.setText("Total"+projectuas.MainApps.jual.totalmem11());
+//            }else if (JFrameMember.id3 == 3) {
+//                labelTotal.setText("Total"+projectuas.MainApps.jual.totalmem12());
+//            }
         }
         else {
             JOptionPane.showMessageDialog(this, "Batal menambahkan!");
@@ -290,13 +329,25 @@ public class JFrameMenuMember extends javax.swing.JFrame {
 
     private void btnKeluarMbrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKeluarMbrActionPerformed
         // TODO add your handling code here:
-        if(beli.getFront() != null) {
-            projectuas.MainApps.jual.sambung(beli.getFront(), beli.getRear());
-        }
         new jFrame.JFrameHome().show();
         this.dispose();
         
     }//GEN-LAST:event_btnKeluarMbrActionPerformed
+
+    private void btnCheckoutMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCheckoutMemberActionPerformed
+        // TODO add your handling code here:
+        if(beli.getFront() != null) {
+            projectuas.MainApps.jual.sambung(beli.getFront(), beli.getRear());
+            JOptionPane.showMessageDialog(this, "Pesanan berhasil disimpan!");
+        }
+        else {
+            JOptionPane.showMessageDialog(this, "Order batal...");
+        }
+    }//GEN-LAST:event_btnCheckoutMemberActionPerformed
+
+    private void btnUbahPwActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUbahPwActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnUbahPwActionPerformed
 
     /**
      * @param args the command line arguments
@@ -335,16 +386,17 @@ public class JFrameMenuMember extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable KeranjangMember;
+    private javax.swing.JButton btnCheckoutMember;
     private javax.swing.JButton btnHapusMbr;
     private javax.swing.JButton btnKeluarMbr;
     private javax.swing.JButton btnTambahMbr;
     private javax.swing.JButton btnUbahPw;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel labelTotal;
     private javax.swing.JTable listBarangMember;
     // End of variables declaration//GEN-END:variables
 }

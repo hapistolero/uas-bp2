@@ -15,6 +15,7 @@ import projectuas.cTransaksi;
  */
 public class JFrameMenuPembeli extends javax.swing.JFrame {
     public static cDaftarTransaksi beli;
+    int total;
     /**
      * Creates new form JFrameMenuPembeli
      */
@@ -68,9 +69,10 @@ public class JFrameMenuPembeli extends javax.swing.JFrame {
         keranjangPb = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
         btnTambahPb = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnCheckout = new javax.swing.JButton();
         btnHapus = new javax.swing.JButton();
         btnKeluarPb = new javax.swing.JButton();
+        labelTotal = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -131,9 +133,14 @@ public class JFrameMenuPembeli extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setBackground(new java.awt.Color(102, 102, 255));
-        jButton2.setForeground(new java.awt.Color(0, 0, 0));
-        jButton2.setText("Checkout");
+        btnCheckout.setBackground(new java.awt.Color(102, 102, 255));
+        btnCheckout.setForeground(new java.awt.Color(0, 0, 0));
+        btnCheckout.setText("Checkout");
+        btnCheckout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCheckoutActionPerformed(evt);
+            }
+        });
 
         btnHapus.setBackground(new java.awt.Color(102, 102, 102));
         btnHapus.setForeground(new java.awt.Color(255, 255, 255));
@@ -153,36 +160,38 @@ public class JFrameMenuPembeli extends javax.swing.JFrame {
             }
         });
 
+        labelTotal.setBackground(new java.awt.Color(0, 0, 0));
+        labelTotal.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        labelTotal.setForeground(new java.awt.Color(0, 0, 0));
+        labelTotal.setText("Total : ");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(btnHapus, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnTambahPb, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnHapus, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                        .addComponent(btnCheckout, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnTambahPb, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(jLabel1))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(btnKeluarPb, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jLabel2)
+                            .addComponent(btnKeluarPb, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(6, 6, 6)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(labelTotal)
+                .addGap(26, 26, 26))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -192,13 +201,15 @@ public class JFrameMenuPembeli extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel1)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(labelTotal))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnTambahPb, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCheckout, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnHapus, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                 .addComponent(btnKeluarPb, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -257,8 +268,15 @@ public class JFrameMenuPembeli extends javax.swing.JFrame {
             barangBaru[0] = projectuas.MainApps.br.getBarang().getNama();
             barangBaru[1] = String.valueOf(jml);
             barangBaru[2] = String.valueOf(projectuas.MainApps.br.getBarang().getHarga());
-            barangBaru[3] = String.valueOf(projectuas.MainApps.br.getBarang().getHarga() * jml);
+            //barangBaru[3] = String.valueOf(projectuas.MainApps.br.getBarang().getHarga() * jml);
+            //modelCart.addRow(barangBaru);
+            int subtotal = 0;
+            subtotal = (int) (projectuas.MainApps.br.getBarang().getHarga() * jml);
+            //barangBaru[4] = String.valueOf((projectuas.MainApps.br.getBarang().getHarga()*0.95) * jml);
+            barangBaru[3] = String.valueOf(subtotal);
+            total = total+subtotal;
             modelCart.addRow(barangBaru);
+            labelTotal.setText("Total : "+total);
         } 
         else {
             JOptionPane.showMessageDialog(this, "Batal menambahkan!");
@@ -286,12 +304,20 @@ public class JFrameMenuPembeli extends javax.swing.JFrame {
 
     private void btnKeluarPbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKeluarPbActionPerformed
         // TODO add your handling code here:
-        if(beli.getFront() != null) {
-            projectuas.MainApps.jual.sambung(beli.getFront(), beli.getRear());
-        }
         new jFrame.JFrameHome().show();
         this.dispose();
     }//GEN-LAST:event_btnKeluarPbActionPerformed
+
+    private void btnCheckoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCheckoutActionPerformed
+        // TODO add your handling code here:
+        if(beli.getFront() != null) {
+            projectuas.MainApps.jual.sambung(beli.getFront(), beli.getRear());
+            JOptionPane.showMessageDialog(this, "Pesanan berhasil disimpan!");
+        }
+        else {
+            JOptionPane.showMessageDialog(this, "Order batal...");
+        }
+    }//GEN-LAST:event_btnCheckoutActionPerformed
 
     /**
      * @param args the command line arguments
@@ -329,16 +355,17 @@ public class JFrameMenuPembeli extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCheckout;
     private javax.swing.JButton btnHapus;
     private javax.swing.JButton btnKeluarPb;
     private javax.swing.JButton btnTambahPb;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable keranjangPb;
+    private javax.swing.JLabel labelTotal;
     private javax.swing.JTable listBarangPb;
     // End of variables declaration//GEN-END:variables
 }

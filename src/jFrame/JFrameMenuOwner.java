@@ -125,6 +125,32 @@ public class JFrameMenuOwner extends javax.swing.JFrame {
         member3[2] = String.valueOf(projectuas.MainApps.jual.totalmem12());
         modelMember.addRow(member3);
         
+        // Tampilkan rekap grafik
+//        DefaultTableModel modelGraf = (DefaultTableModel) listGrafik.getModel();
+//        cTransaksi t = projectuas.cDaftarTransaksi.front;
+//        double nominal = 0;
+//        int j;
+//        for (; t!=null; t=t.next) {
+//            j = 1;
+//            if (t.getIdBrg()==j && t.getStatus().equalsIgnoreCase("Diproses")) {
+//                 nominal=nominal+t.getBarang().getHarga()*t.getJumlah();
+//                  if (t.getPembeli().equalsIgnoreCase("1")||t.getPembeli().equalsIgnoreCase("2")||t.getPembeli().equalsIgnoreCase("3")) {
+//                    nominal -= (0.05*nominal);
+//                }      
+//            }  
+//            double nominalgraf = nominal*0.0001;
+//            double nominalgrafx = nominal*0.001;
+//            String x = "";
+//            String graf[][] = new String [5][2];
+//            for (int i = 0; i < nominalgraf-1; i++) {
+//                x += "X";
+//                graf[i][0] = t.getBarang().getNama();
+//                graf[i][1] = x;
+//            }
+//            modelGraf.addRow(graf);
+//            j++;
+//        }
+        
         
         //tampil tabel ubah harga
         DefaultTableModel modelBr = (DefaultTableModel)listBarangOwner.getModel();
@@ -181,7 +207,7 @@ public class JFrameMenuOwner extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         listPembelianMember = new javax.swing.JTable();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTable4 = new javax.swing.JTable();
+        listGrafik = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jScrollPane5 = new javax.swing.JScrollPane();
@@ -215,10 +241,12 @@ public class JFrameMenuOwner extends javax.swing.JFrame {
         jLabel1.setText("Antrean Transaksi");
 
         labelDiproses.setBackground(new java.awt.Color(0, 0, 0));
+        labelDiproses.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         labelDiproses.setForeground(new java.awt.Color(0, 0, 0));
         labelDiproses.setText("Nilai penjualan yang telah diproses : ");
 
         labelBelum.setBackground(new java.awt.Color(0, 0, 0));
+        labelBelum.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         labelBelum.setForeground(new java.awt.Color(0, 0, 0));
         labelBelum.setText("Nilai penjualan yang belum diproses : ");
 
@@ -238,7 +266,7 @@ public class JFrameMenuOwner extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 955, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 717, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(0, 0, Short.MAX_VALUE))
@@ -266,7 +294,7 @@ public class JFrameMenuOwner extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(26, 26, 26)
                         .addComponent(btnKeluar)))
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Antrean Transaksi", jPanel1);
@@ -322,15 +350,19 @@ public class JFrameMenuOwner extends javax.swing.JFrame {
         });
         jScrollPane3.setViewportView(listPembelianMember);
 
-        jTable4.setModel(new javax.swing.table.DefaultTableModel(
+        listGrafik.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
             },
             new String [] {
                 "Nama Barang", "Grafik Penjualan"
             }
         ));
-        jScrollPane4.setViewportView(jTable4);
+        jScrollPane4.setViewportView(listGrafik);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -346,9 +378,9 @@ public class JFrameMenuOwner extends javax.swing.JFrame {
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 404, Short.MAX_VALUE)))
                 .addGap(16, 16, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
-                .addContainerGap(89, Short.MAX_VALUE))
+                    .addComponent(jLabel6)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -422,7 +454,7 @@ public class JFrameMenuOwner extends javax.swing.JFrame {
                         .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(53, 53, 53)
                         .addComponent(btnUbahHarga)))
-                .addContainerGap(363, Short.MAX_VALUE))
+                .addContainerGap(125, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnKeluarMbr, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -450,7 +482,7 @@ public class JFrameMenuOwner extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 967, Short.MAX_VALUE)
+                .addComponent(jTabbedPane1)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -560,11 +592,11 @@ public class JFrameMenuOwner extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable4;
     private javax.swing.JLabel labelBelum;
     private javax.swing.JLabel labelDiproses;
     private javax.swing.JLabel labelPemasukan;
     private javax.swing.JTable listBarangOwner;
+    private javax.swing.JTable listGrafik;
     private javax.swing.JTable listPemasukan;
     private javax.swing.JTable listPembelianMember;
     private javax.swing.JTable listTransaksi;

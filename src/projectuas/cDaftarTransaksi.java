@@ -5,8 +5,8 @@ package projectuas;
  * @author hafiz ilham ardana
  */
 public class cDaftarTransaksi {
-    cTransaksi front , rear;
-    int jumlahtr;
+    public static cTransaksi front , rear;
+    public static int jumlahtr;
     
     
     public cDaftarTransaksi(){
@@ -137,10 +137,11 @@ public class cDaftarTransaksi {
         double nominal=0;
         for (; t!=null; t=t.next) {
             if (t.getStatus().equalsIgnoreCase("Diproses")) {
-                 nominal=nominal+t.getBarang().getHarga()*t.getJumlah();
-                if (t.getPembeli().equalsIgnoreCase("10")||t.getPembeli().equalsIgnoreCase("11")||t.getPembeli().equalsIgnoreCase("12")) {
-                    nominal=nominal-(0.1*nominal);
-                }                                       
+                 
+                if (t.getPembeli().equalsIgnoreCase("1")||t.getPembeli().equalsIgnoreCase("2")||t.getPembeli().equalsIgnoreCase("3")) {
+                    nominal=nominal-(0.05*nominal);
+                }                        
+                nominal=nominal+(t.getBarang().getHarga()*t.getJumlah());
             }                
         }
         return nominal;
@@ -152,8 +153,8 @@ public class cDaftarTransaksi {
         for (; t!=null; t=t.next) {
             if (t.getStatus().equalsIgnoreCase("Belum diproses")) {
 
-                 nominal=nominal+t.getBarang().getHarga()*t.getJumlah();
-                if (t.getPembeli().equalsIgnoreCase("10")||t.getPembeli().equalsIgnoreCase("11")||t.getPembeli().equalsIgnoreCase("12")) {
+                 nominal=nominal+(t.getBarang().getHarga()*t.getJumlah());
+                if (t.getPembeli().equalsIgnoreCase("1")||t.getPembeli().equalsIgnoreCase("2")||t.getPembeli().equalsIgnoreCase("3")) {
                     nominal=nominal-(0.05*nominal);
                 }
             }                
@@ -323,7 +324,7 @@ public class cDaftarTransaksi {
             if (t.getIdBrg()==5&&t.getStatus().equalsIgnoreCase("Diproses")) {
                 nominal=nominal+t.getBarang().getHarga()*t.getJumlah();
                 if (t.getPembeli().equalsIgnoreCase("1")|t.getPembeli().equalsIgnoreCase("2")||t.getPembeli().equalsIgnoreCase("3")) {
-                    nominal=nominal-(0.1*nominal);
+                    nominal=nominal-(0.05*nominal);
                 }                                       
             }                
         }
@@ -333,13 +334,16 @@ public class cDaftarTransaksi {
 
     public double totalmem10(){
         cTransaksi t=front;
-        double nominal=0;
+        int nominal=0;
         for (; t!=null; t=t.next) {
             if (t.getStatus().equalsIgnoreCase("Diproses")&&t.getPembeli().equalsIgnoreCase("1")) {
-                nominal=nominal+t.getBarang().getHarga()*t.getJumlah();
+                nominal=nominal+(t.getBarang().getHarga()*t.getJumlah());
                 if (t.getPembeli().equalsIgnoreCase("1")) {
-                    nominal=nominal-(0.05*nominal);
-                }                                       
+                    //int diskon = (int) (0.05*nominal);
+                    nominal=(int) (nominal-(0.05*nominal));
+                    
+                }                     
+                
             }                
         }
 
