@@ -7,6 +7,7 @@ package jFrame;
 import static jFrame.JFrameMenuAdmin.jmlPesan;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import projectuas.cDaftarTransaksi;
 import projectuas.cTransaksi;
 
 /**
@@ -40,7 +41,7 @@ public class JFrameMenuOwner extends javax.swing.JFrame {
                 if(transBaru.getPembeli().equalsIgnoreCase("1") || transBaru.getPembeli().equalsIgnoreCase("2") || transBaru.getPembeli().equalsIgnoreCase("3")) {
 //                    String subTotal = String.valueOf((trans.getBarang().getHarga()*trans.getJumlah()) * 0.05);
                     proses[i][5] = String.valueOf( (transBaru.getBarang().getHarga()*transBaru.getJumlah()) * 0.05);
-                    proses[i][6] = String.valueOf(transBaru.getBarang().getHarga() - transBaru.getBarang().getHarga()*0.05);
+                    proses[i][6] = String.valueOf((transBaru.getBarang().getHarga() - (transBaru.getBarang().getHarga()*0.05))*transBaru.getJumlah());
                 } else {
                     proses[i][5] = "-";
                     proses[i][6] = String.valueOf(transBaru.getBarang().getHarga() * transBaru.getJumlah());
@@ -125,30 +126,42 @@ public class JFrameMenuOwner extends javax.swing.JFrame {
         member3[2] = String.valueOf(projectuas.MainApps.jual.totalmem12());
         modelMember.addRow(member3);
         
+        
+        
         // Tampilkan rekap grafik
-//        DefaultTableModel modelGraf = (DefaultTableModel) listGrafik.getModel();
-//        cTransaksi t = projectuas.cDaftarTransaksi.front;
+        DefaultTableModel modelGraf = (DefaultTableModel) listGrafik.getModel();
+        modelGraf.setValueAt(projectuas.MainApps.jual.totalpangraf(), 0, 1);
+        modelGraf.setValueAt(projectuas.MainApps.jual.totalblendgraf(), 1, 1);
+        modelGraf.setValueAt(projectuas.MainApps.jual.totalulekgraf(), 2, 1);
+        modelGraf.setValueAt(projectuas.MainApps.jual.totalmuggraf(), 3, 1);
+        modelGraf.setValueAt(projectuas.MainApps.jual.totalwajangraf(), 4, 1);
+//        cTransaksi tr = projectuas.MainApps.jual.getFront();
 //        double nominal = 0;
+//        boolean ketemu = false;
 //        int j;
-//        for (; t!=null; t=t.next) {
+//        for (cTransaksi t = tr; t!=null; t= t.next) {
 //            j = 1;
-//            if (t.getIdBrg()==j && t.getStatus().equalsIgnoreCase("Diproses")) {
-//                 nominal=nominal+t.getBarang().getHarga()*t.getJumlah();
-//                  if (t.getPembeli().equalsIgnoreCase("1")||t.getPembeli().equalsIgnoreCase("2")||t.getPembeli().equalsIgnoreCase("3")) {
+//            if (t.getIdBrg()== j && t.getStatus().equalsIgnoreCase("Diproses")) {
+//                nominal=nominal+t.getBarang().getHarga()*t.getJumlah();
+//                if (t.getPembeli().equalsIgnoreCase("1")||t.getPembeli().equalsIgnoreCase("2")||t.getPembeli().equalsIgnoreCase("3")) {
 //                    nominal -= (0.05*nominal);
-//                }      
+//                }
+//                ketemu = true;
 //            }  
-//            double nominalgraf = nominal*0.0001;
-//            double nominalgrafx = nominal*0.001;
-//            String x = "";
-//            String graf[][] = new String [5][2];
-//            for (int i = 0; i < nominalgraf-1; i++) {
-//                x += "X";
-//                graf[i][0] = t.getBarang().getNama();
-//                graf[i][1] = x;
+//            if(ketemu) {
+//                double nominalgraf = nominal*0.0001;
+//                double nominalgrafx = nominal*0.001;
+//                String x = "";
+//                String graf[][] = new String [5][2];
+//                for (int i = 0; i < nominalgraf-1; i++) {
+//                    x += "X";
+//                }
+//                graf[j][0] = t.getBarang().getNama();
+//                graf[j][1] = x;
+//                modelGraf.setValueAt(x, j-1, 1);
 //            }
-//            modelGraf.addRow(graf);
 //            j++;
+//            
 //        }
         
         
@@ -266,7 +279,7 @@ public class JFrameMenuOwner extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 717, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 851, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(0, 0, Short.MAX_VALUE))
@@ -321,6 +334,10 @@ public class JFrameMenuOwner extends javax.swing.JFrame {
             }
         });
         jScrollPane2.setViewportView(listPemasukan);
+        if (listPemasukan.getColumnModel().getColumnCount() > 0) {
+            listPemasukan.getColumnModel().getColumn(0).setMinWidth(12);
+            listPemasukan.getColumnModel().getColumn(0).setMaxWidth(32);
+        }
 
         jLabel5.setBackground(new java.awt.Color(0, 0, 0));
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -349,20 +366,36 @@ public class JFrameMenuOwner extends javax.swing.JFrame {
             }
         });
         jScrollPane3.setViewportView(listPembelianMember);
+        if (listPembelianMember.getColumnModel().getColumnCount() > 0) {
+            listPembelianMember.getColumnModel().getColumn(0).setMinWidth(12);
+            listPembelianMember.getColumnModel().getColumn(0).setMaxWidth(32);
+        }
 
         listGrafik.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+                {"Panci", null},
+                {"Blender", null},
+                {"Ulekan", null},
+                {"Mug", null},
+                {"Wajan", null}
             },
             new String [] {
                 "Nama Barang", "Grafik Penjualan"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane4.setViewportView(listGrafik);
+        if (listGrafik.getColumnModel().getColumnCount() > 0) {
+            listGrafik.getColumnModel().getColumn(0).setMinWidth(72);
+            listGrafik.getColumnModel().getColumn(0).setMaxWidth(108);
+        }
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -376,26 +409,27 @@ public class JFrameMenuOwner extends javax.swing.JFrame {
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                         .addComponent(labelPemasukan, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 404, Short.MAX_VALUE)))
-                .addGap(16, 16, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 429, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelPemasukan)
-                    .addComponent(jLabel6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(labelPemasukan)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel5)))
+                        .addComponent(jLabel5))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(78, Short.MAX_VALUE))
@@ -454,7 +488,7 @@ public class JFrameMenuOwner extends javax.swing.JFrame {
                         .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(53, 53, 53)
                         .addComponent(btnUbahHarga)))
-                .addContainerGap(125, Short.MAX_VALUE))
+                .addContainerGap(259, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnKeluarMbr, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -482,7 +516,7 @@ public class JFrameMenuOwner extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane1)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 863, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(

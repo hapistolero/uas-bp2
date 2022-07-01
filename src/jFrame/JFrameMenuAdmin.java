@@ -41,7 +41,7 @@ public class JFrameMenuAdmin extends javax.swing.JFrame {
                 if(transBaru.getPembeli().equalsIgnoreCase("1") || transBaru.getPembeli().equalsIgnoreCase("2") || transBaru.getPembeli().equalsIgnoreCase("3")) {
 //                    String subTotal = String.valueOf((trans.getBarang().getHarga()*trans.getJumlah()) * 0.05);
                     proses[i][5] = String.valueOf( (transBaru.getBarang().getHarga()*transBaru.getJumlah()) * 0.05);
-                    proses[i][6] = String.valueOf(transBaru.getBarang().getHarga() - transBaru.getBarang().getHarga()*0.05);
+                    proses[i][6] = String.valueOf( (transBaru.getBarang().getHarga() - (transBaru.getBarang().getHarga()*0.05))*transBaru.getJumlah());
                 } else {
                     proses[i][5] = "-";
                     proses[i][6] = String.valueOf(transBaru.getBarang().getHarga() * transBaru.getJumlah());
@@ -123,19 +123,17 @@ public class JFrameMenuAdmin extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jScrollPane1)
+                        .addContainerGap())
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton1)
                         .addGap(14, 14, 14))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap())
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(btnProses)
-                                .addGap(17, 17, 17))))))
+                        .addGap(0, 606, Short.MAX_VALUE)
+                        .addComponent(btnProses)
+                        .addGap(17, 17, 17))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

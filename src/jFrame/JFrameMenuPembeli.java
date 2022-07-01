@@ -16,6 +16,7 @@ import projectuas.cTransaksi;
 public class JFrameMenuPembeli extends javax.swing.JFrame {
     public static cDaftarTransaksi beli;
     int total;
+    boolean checkedOut = false;
     /**
      * Creates new form JFrameMenuPembeli
      */
@@ -310,12 +311,18 @@ public class JFrameMenuPembeli extends javax.swing.JFrame {
 
     private void btnCheckoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCheckoutActionPerformed
         // TODO add your handling code here:
-        if(beli.getFront() != null) {
+        if (checkedOut != true) {
+            if(beli.getFront() != null) {
             projectuas.MainApps.jual.sambung(beli.getFront(), beli.getRear());
             JOptionPane.showMessageDialog(this, "Pesanan berhasil disimpan!");
+            checkedOut = true;
+            }
+            else {
+                JOptionPane.showMessageDialog(this, "Order batal...");
+            }
         }
         else {
-            JOptionPane.showMessageDialog(this, "Order batal...");
+            JOptionPane.showMessageDialog(this, "Pesanan sudah di simpan sebelumnya!");
         }
     }//GEN-LAST:event_btnCheckoutActionPerformed
 

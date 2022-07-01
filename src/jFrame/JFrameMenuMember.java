@@ -19,8 +19,8 @@ public class JFrameMenuMember extends javax.swing.JFrame {
     /**
      * Creates new form JFrameMenuMember
      */
-    
-    int total = 0;
+    boolean checkedOut = false;
+    double total = 0;
     
     public JFrameMenuMember() {
         initComponents();
@@ -185,28 +185,30 @@ public class JFrameMenuMember extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jLabel1)
-                        .addGap(75, 75, 75)
-                        .addComponent(labelTotal))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnHapusMbr, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnKeluarMbr, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnUbahPw)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnHapusMbr, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnKeluarMbr, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnUbahPw)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(btnCheckoutMember, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(btnTambahMbr, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(btnCheckoutMember, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnTambahMbr, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap())
+                                .addComponent(jLabel2)
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addContainerGap())
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(labelTotal)
+                        .addGap(81, 81, 81))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -288,10 +290,10 @@ public class JFrameMenuMember extends javax.swing.JFrame {
             barangBaru[0] = projectuas.MainApps.br.getBarang().getNama();
             barangBaru[1] = String.valueOf(jml);
             barangBaru[2] = String.valueOf(projectuas.MainApps.br.getBarang().getHarga());
-            barangBaru[3] = String.valueOf(projectuas.MainApps.br.getBarang().getHarga()*0.05);
+            barangBaru[3] = String.valueOf((projectuas.MainApps.br.getBarang().getHarga()*0.05)*jml);
             
             
-            int subtotal = 0;
+            double subtotal = 0;
             subtotal = (int) ((projectuas.MainApps.br.getBarang().getHarga()*0.95) * jml);
             //barangBaru[4] = String.valueOf((projectuas.MainApps.br.getBarang().getHarga()*0.95) * jml);
             barangBaru[4] = String.valueOf(subtotal);
@@ -336,17 +338,52 @@ public class JFrameMenuMember extends javax.swing.JFrame {
 
     private void btnCheckoutMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCheckoutMemberActionPerformed
         // TODO add your handling code here:
-        if(beli.getFront() != null) {
+        if (checkedOut != true) {
+            if(beli.getFront() != null) {
             projectuas.MainApps.jual.sambung(beli.getFront(), beli.getRear());
             JOptionPane.showMessageDialog(this, "Pesanan berhasil disimpan!");
+            checkedOut = true;
+            }
+            else {
+                JOptionPane.showMessageDialog(this, "Order batal...");
+            }
         }
         else {
-            JOptionPane.showMessageDialog(this, "Order batal...");
+            JOptionPane.showMessageDialog(this, "Pesanan sudah di simpan sebelumnya!");
         }
     }//GEN-LAST:event_btnCheckoutMemberActionPerformed
 
     private void btnUbahPwActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUbahPwActionPerformed
         // TODO add your handling code here:
+        String pin = JOptionPane.showInputDialog("Masukkan pin lama");
+        boolean valid = false;
+        boolean beneran = false;
+        int yakin = JOptionPane.showConfirmDialog(this, "Yakin Ubad Password?");
+        if (yakin == 0) {
+            beneran = true;
+        }
+        if (beneran) {
+            if (pin.equalsIgnoreCase(String.valueOf(JFrameMember.pwd1))) {
+                int pinbaru1 = Integer.parseInt(JOptionPane.showInputDialog("Masukkan pin baru"));
+                JFrameMember.pwd1 = pinbaru1;
+                valid = true;
+            } else if (pin.equalsIgnoreCase(String.valueOf(JFrameMember.pwd2))) {
+                int pinbaru2 = Integer.parseInt(JOptionPane.showInputDialog("Masukkan pin baru"));
+                JFrameMember.pwd2 = pinbaru2;
+                valid = true;
+            }else if (pin.equalsIgnoreCase(String.valueOf(JFrameMember.pwd3))) {
+                int pinbaru3 = Integer.parseInt(JOptionPane.showInputDialog("Masukkan pin baru"));
+                JFrameMember.pwd3 = pinbaru3;
+                valid = true;
+            }
+            if (valid) {
+                JOptionPane.showMessageDialog(this, "Password diperbarui");
+            }else{
+                JOptionPane.showMessageDialog(this, "Password salah!");
+            }
+        }else{
+            JOptionPane.showMessageDialog(this, "Pembaruan dibatalakan");
+        }
     }//GEN-LAST:event_btnUbahPwActionPerformed
 
     /**

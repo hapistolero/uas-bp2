@@ -38,7 +38,7 @@ public class JFramePembeli extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(331, 557));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projectuas/asset/download-icon-customer+information+personal+profile+user+icon-1320086045331670685_512.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projectuas/asset/Group.png"))); // NOI18N
 
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Masukkan Nama:");
@@ -88,10 +88,9 @@ public class JFramePembeli extends javax.swing.JFrame {
                         .addComponent(jTFPembeli, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(126, 126, 126)
-                        .addComponent(jBtnMasukPembeli))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addComponent(BtnKembaliPb)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(BtnKembaliPb)
+                            .addComponent(jBtnMasukPembeli))))
                 .addContainerGap(76, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -105,9 +104,9 @@ public class JFramePembeli extends javax.swing.JFrame {
                 .addComponent(jTFPembeli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jBtnMasukPembeli)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 210, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(BtnKembaliPb)
-                .addGap(19, 19, 19))
+                .addContainerGap(216, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
