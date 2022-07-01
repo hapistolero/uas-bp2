@@ -265,19 +265,19 @@ public class JFrameMenuMember extends javax.swing.JFrame {
             DefaultTableModel modelBr = (DefaultTableModel) listBarangMember.getModel();
             int row = listBarangMember.getSelectedRow();
             String barang = String.valueOf(modelBr.getValueAt(row, 0));
-            if (barang.equalsIgnoreCase("panci")) {
+            if (barang.equalsIgnoreCase("LPG")) {
                 projectuas.MainApps.br = new cTransaksi( String.valueOf(projectuas.MainApps.kode), String.valueOf(JFrameMember.idMbr), projectuas.MainApps.brg1, jml, "Belum diproses", 1);
             } 
-            else if (barang.equalsIgnoreCase("Blender")) {
+            else if (barang.equalsIgnoreCase("Galon")) {
                 projectuas.MainApps.br = new cTransaksi( String.valueOf(projectuas.MainApps.kode), String.valueOf(JFrameMember.idMbr), projectuas.MainApps.brg2, jml, "Belum diproses", 2);
             }
-            else if (barang.equalsIgnoreCase("Ulekan")) {
+            else if (barang.equalsIgnoreCase("Minyak Goreng")) {
                 projectuas.MainApps.br = new cTransaksi( String.valueOf(projectuas.MainApps.kode), String.valueOf(JFrameMember.idMbr), projectuas.MainApps.brg3, jml, "Belum diproses", 3);
             }
-            else if (barang.equalsIgnoreCase("Mug")) {
+            else if (barang.equalsIgnoreCase("Minuman Bersoda")) {
                 projectuas.MainApps.br = new cTransaksi( String.valueOf(projectuas.MainApps.kode), String.valueOf(JFrameMember.idMbr), projectuas.MainApps.brg4, jml, "Belum diproses", 4);
             }
-            else if (barang.equalsIgnoreCase("Wajan")) {
+            else if (barang.equalsIgnoreCase("Sirup")) {
                 projectuas.MainApps.br = new cTransaksi( String.valueOf(projectuas.MainApps.kode), String.valueOf(JFrameMember.idMbr), projectuas.MainApps.brg5, jml, "Belum diproses", 5);
             }
             beli.AddTransaksi(projectuas.MainApps.br);
