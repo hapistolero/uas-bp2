@@ -10,7 +10,7 @@ public class MainApps {
     public static cbarang brg2 = new cbarang("Galon", 18000);
     public static cbarang brg3 = new cbarang("Minyak Goreng", 25000);
     public static cbarang brg4 = new cbarang("Minuman Bersoda", 10000);
-    public static cbarang brg5 = new cbarang("Sabun Cuci Piring", 11000);
+    public static cbarang brg5 = new cbarang("Sirup", 19000);
     public static cTransaksi br;
     public static cDaftarTransaksi jual = new cDaftarTransaksi();
     
