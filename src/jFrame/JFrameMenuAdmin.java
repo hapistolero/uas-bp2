@@ -4,6 +4,8 @@
  */
 package jFrame;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import projectuas.cTransaksi;
@@ -25,6 +27,14 @@ public class JFrameMenuAdmin extends javax.swing.JFrame {
     
     public JFrameMenuAdmin() {
         initComponents();
+        Dimension layar = Toolkit.getDefaultToolkit().getScreenSize();
+
+        // membuat titik x dan y
+        int x = layar.width / 2  - this.getSize().width / 2;
+        int y = layar.height / 2 - this.getSize().height / 2;
+
+        this.setLocation(x, y);
+        
         DefaultTableModel modeltbl = (DefaultTableModel)listProses.getModel();
         cTransaksi transBaru = trans;
         String proses[][] = new String[jmlPesan][8];

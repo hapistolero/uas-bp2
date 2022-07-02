@@ -4,6 +4,8 @@
  */
 package jFrame;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import javax.swing.JOptionPane;
 
 /**
@@ -16,10 +18,18 @@ public class JFrameOwner extends javax.swing.JFrame {
      * Creates new form JFrameOwner
      */
     
-    int pwd = 123;
+    String pwd = "owner123";
     
     public JFrameOwner() {
         initComponents();
+        
+        Dimension layar = Toolkit.getDefaultToolkit().getScreenSize();
+
+        // membuat titik x dan y
+        int x = layar.width / 2  - this.getSize().width / 2;
+        int y = layar.height / 2 - this.getSize().height / 2;
+
+        this.setLocation(x, y);
     }
 
     /**
@@ -131,7 +141,7 @@ public class JFrameOwner extends javax.swing.JFrame {
     private void jBtnMasukOwnerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnMasukOwnerActionPerformed
         // TODO add your handling code here:
         String pass = jPFOwner.getText();
-        if (Integer.parseInt(pass)==123) {
+        if (pass.equals(pwd)) {
             new jFrame.JFrameMenuOwner().show();
             this.dispose();
         }else{

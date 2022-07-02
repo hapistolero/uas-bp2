@@ -5,6 +5,8 @@
 package jFrame;
 
 import static jFrame.JFrameMenuAdmin.jmlPesan;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import projectuas.cDaftarTransaksi;
@@ -24,6 +26,14 @@ public class JFrameMenuOwner extends javax.swing.JFrame {
     
     public JFrameMenuOwner() {
         initComponents();
+        
+        Dimension layar = Toolkit.getDefaultToolkit().getScreenSize();
+
+        // membuat titik x dan y
+        int x = layar.width / 2  - this.getSize().width / 2;
+        int y = layar.height / 2 - this.getSize().height / 2;
+
+        this.setLocation(x, y);
         
         DefaultTableModel modeltbl = (DefaultTableModel)listTransaksi.getModel();
         cTransaksi transBaru = trans;
@@ -373,11 +383,11 @@ public class JFrameMenuOwner extends javax.swing.JFrame {
 
         listGrafik.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"Panci", null},
-                {"Blender", null},
-                {"Ulekan", null},
-                {"Mug", null},
-                {"Wajan", null}
+                {"LPG", null},
+                {"Galon", null},
+                {"Minyak Goreng", null},
+                {"Minuman Bersoda", null},
+                {"Sirup", null}
             },
             new String [] {
                 "Nama Barang", "Grafik Penjualan"
@@ -516,7 +526,7 @@ public class JFrameMenuOwner extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 863, Short.MAX_VALUE)
+                .addComponent(jTabbedPane1)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -544,19 +554,19 @@ public class JFrameMenuOwner extends javax.swing.JFrame {
             int row = listBarangOwner.getSelectedRow();
             String barang = String.valueOf(modelBr.getValueAt(row, 0));
             modelBr.setValueAt(hargaBaru, row, 1);
-            if (barang.equalsIgnoreCase("panci")) {
+            if (barang.equalsIgnoreCase("LPG")) {
                 projectuas.MainApps.brg1.setharga(Integer.parseInt(hargaBaru));
             } 
-            else if (barang.equalsIgnoreCase("Blender")) {
+            else if (barang.equalsIgnoreCase("Galon")) {
                 projectuas.MainApps.brg2.setharga(Integer.parseInt(hargaBaru));
             }
-            else if (barang.equalsIgnoreCase("Ulekan")) {
+            else if (barang.equalsIgnoreCase("MInyak Goreng")) {
                 projectuas.MainApps.brg3.setharga(Integer.parseInt(hargaBaru));
             }
-            else if (barang.equalsIgnoreCase("Mug")) {
+            else if (barang.equalsIgnoreCase("Minuman Bersoda")) {
                 projectuas.MainApps.brg4.setharga(Integer.parseInt(hargaBaru));
             }
-            else if (barang.equalsIgnoreCase("Wajan")) {
+            else if (barang.equalsIgnoreCase("Sirup")) {
                 projectuas.MainApps.brg5.setharga(Integer.parseInt(hargaBaru));
             }
             JOptionPane.showMessageDialog(this, "Harga berhasil diubah!");

@@ -25,7 +25,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jTabbedPane1" pref="863" max="32767" attributes="0"/>
+              <Component id="jTabbedPane1" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -383,11 +383,11 @@
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                       <Table columnCount="2" rowCount="5">
                         <Column editable="false" title="Nama Barang" type="java.lang.Object">
-                          <Data value="Panci"/>
-                          <Data value="Blender"/>
-                          <Data value="Ulekan"/>
-                          <Data value="Mug"/>
-                          <Data value="Wajan"/>
+                          <Data value="LPG"/>
+                          <Data value="Galon"/>
+                          <Data value="Minyak Goreng"/>
+                          <Data value="Minuman Bersoda"/>
+                          <Data value="Sirup"/>
                         </Column>
                         <Column editable="true" title="Grafik Penjualan" type="java.lang.Object"/>
                       </Table>

@@ -4,6 +4,8 @@
  */
 package jFrame;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import javax.swing.JOptionPane;
 
 /**
@@ -11,13 +13,21 @@ import javax.swing.JOptionPane;
  * @author rizka
  */
 public class JFrameAdmin extends javax.swing.JFrame {
-    static int passAdmin = 123;
+    static String passAdmin = "admin123";
 
     /**
      * Creates new form JFrameAdmin
      */
     public JFrameAdmin() {
         initComponents();
+        
+        Dimension layar = Toolkit.getDefaultToolkit().getScreenSize();
+
+        // membuat titik x dan y
+        int x = layar.width / 2  - this.getSize().width / 2;
+        int y = layar.height / 2 - this.getSize().height / 2;
+
+        this.setLocation(x, y);
     }
 
     /**
@@ -129,7 +139,7 @@ public class JFrameAdmin extends javax.swing.JFrame {
     private void jBtnMasukAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnMasukAdminActionPerformed
         // TODO add your handling code here:
         String pw = jTFPassadmin.getText();
-        if (pw.equalsIgnoreCase(String.valueOf(passAdmin))) {
+        if (pw.equalsIgnoreCase(passAdmin)) {
             new jFrame.JFrameMenuAdmin().show();
             System.out.println("masuk menu admin");
             this.dispose();

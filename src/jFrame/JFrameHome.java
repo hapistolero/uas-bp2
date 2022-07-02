@@ -4,6 +4,9 @@
  */
 package jFrame;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
+
 /**
  *
  * @author rizka
@@ -15,6 +18,13 @@ public class JFrameHome extends javax.swing.JFrame {
      */
     public JFrameHome() {
         initComponents();
+        Dimension layar = Toolkit.getDefaultToolkit().getScreenSize();
+
+        // membuat titik x dan y
+        int x = layar.width / 2  - this.getSize().width / 2;
+        int y = layar.height / 2 - this.getSize().height / 2;
+
+        this.setLocation(x, y);
     }
 
     /**
